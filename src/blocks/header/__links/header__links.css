@@ -1,0 +1,7 @@
+@import url(./_mobile/header__links_mobile.css);
+
+@media (max-width: 640px) {
+    .header__links {
+        display: none;
+    }
+}

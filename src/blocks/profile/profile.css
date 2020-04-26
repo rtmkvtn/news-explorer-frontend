@@ -1,0 +1,27 @@
+@import url(./__your-articles/profile__your-articles.css);
+@import url(./__title/profile__title.css);
+@import url(./__key-words/profile__key-words.css);
+
+.profile {
+    padding: 40px 104px 56px;
+}
+
+@media (max-width: 1024px) {
+    .profile {
+        padding-left: 64px;
+        padding-right: 64px;
+    }
+}
+
+@media (max-width: 768px) {
+    .profile {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+}
+
+@media (max-width: 640px) {
+    .profile {
+        padding: 8px 16px 32px;
+    }
+}

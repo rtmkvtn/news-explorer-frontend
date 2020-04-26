@@ -1,0 +1,23 @@
+.results__title {
+    margin: 0 auto 64px;
+    max-width: 1232px;
+    font-family: 'RobotoSlab', Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 40px;
+    line-height: 1.13;
+    color: #1A1B22;
+}
+
+@media (max-width: 768px) {
+    .results__title {
+        font-size: 30px;
+        margin-bottom: 32px;
+    }
+}
+
+@media (max-width: 425px) {
+    .results__title {
+        margin-bottom: 24px;
+    }
+}

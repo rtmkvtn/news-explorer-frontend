@@ -1,0 +1,31 @@
+@import url('./__input/form__input.css');
+@import url('./__button/form__button.css');
+
+.search__form {
+    margin: 64px auto 80px;
+    width: 608px;
+    position: relative;
+    backdrop-filter: blur(8px);
+}
+
+@media (max-width: 768px) {
+    .search__form {
+        margin-top: 48px;
+        margin-left: calc(100vw * .22);
+        margin-bottom: 48px;
+        width: calc(100vw * .58);
+    }
+}
+
+@media (max-width: 640px) {
+    .search__form {
+        margin: 32px 16px;
+        width: calc(100vw - 32px);
+    }   
+}
+
+@media (max-width: 425px) {
+    .search__form {
+        margin-top: 122px;
+    }
+}

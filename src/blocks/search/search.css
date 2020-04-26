@@ -1,0 +1,22 @@
+@import url('./__title/search__title.css');
+@import url('./__text/search__text.css');
+@import url('./__form/search__form.css');
+
+.search {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    position: relative;
+}
+
+.search:before {
+    content: '';
+    z-index:-1;
+    height: calc(100% + 79px);
+    width: 100%;
+    background: url(../../images/georgia-de-lotz--UsJoNxLaNo-unsplash.png) no-repeat;
+    top: -79px;
+    position: absolute;
+    background-position: bottom;
+    background-size: cover;
+}

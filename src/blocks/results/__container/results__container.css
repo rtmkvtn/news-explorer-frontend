@@ -1,0 +1,17 @@
+@import url(../../cards-container/cards-container.css);
+
+.results__container {
+    margin-top: 64px;
+}
+
+@media (max-width: 768px) {
+    .results__container {
+        margin-top: 32px;
+    }
+}
+
+@media (max-width: 640px) {
+    .results__container {
+        margin-top: 24px;
+    }
+}

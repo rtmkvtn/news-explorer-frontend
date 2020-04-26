@@ -1,0 +1,20 @@
+@import url(./__text/key-word__text.css);
+
+.card__key-word {
+    height: 40px;
+    padding: 0 12px;
+
+    display: block;
+    position: absolute;
+    border-radius: 10px;
+    top: 24px;
+    left: 24px;
+    background-color: #fff;
+}
+
+@media (max-width: 1024px) {
+    .card__key-word {
+        top: 16px;
+        left: 16px;
+    }
+}

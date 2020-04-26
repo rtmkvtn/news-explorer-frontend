@@ -1,0 +1,9 @@
+@import url(./_black/menu-button__icon_black.css);
+
+.menu-button__icon {
+    background: url(../../../../images/menu.svg) center no-repeat;
+    width: 24px;
+    height: 24px;
+    position: relative;
+    z-index: 2;
+}

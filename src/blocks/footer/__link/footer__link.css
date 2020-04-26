@@ -1,0 +1,50 @@
+.footer__link {
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 1.33;
+    text-align: center;
+    color: #1a1b22;
+    text-decoration: none;
+    text-align: center;
+    margin-left: 28px;
+}
+
+.footer__link_fb {
+    background-image: url(../../../images/facebookIcon.svg);
+    height: 20px;
+    width: 20px;
+}
+
+@media (max-width: 768px) {
+    .footer__link {
+        margin-left: 22px;
+    }
+    .footer__link_fb {
+        background-image: url(../../../images/facebookIconRound.svg);
+        height: 22px;
+        width: 22px;
+    }
+}
+
+@media (max-width: 640px) {
+    .footer__link {
+        margin-left: 0;
+        margin-right: 32px;
+    }
+    .footer__link:last-of-type {
+        margin-right: 0;
+    }
+}
+
+@media (max-width: 425px) {
+    .footer__link {
+        margin-right: 28px;
+    }
+    .footer__link_fb {
+        background-image: url(../../../images/facebookIcon.svg);
+        height: 20px;
+        width: 20px;
+    }
+}

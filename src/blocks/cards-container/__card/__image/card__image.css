@@ -1,0 +1,48 @@
+.card__image {
+    background: url(../../../../images/card1image.png) no-repeat;
+    background-size: cover;
+    margin: 0;
+    height: 272px;
+
+    box-sizing: border-box;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+@media (max-width: 1024px) {
+    .card__image {
+        height: 195px;
+    }
+}
+
+@media (max-width: 768px) {
+    .card__image {
+        height: 150px;
+    }
+}
+
+@media (max-width: 425px) {
+    .card__image {
+        height: 196px;
+    }
+}
+
+.card__image-2 {
+    background: url(../../../../images/card2image.png);
+}
+
+.card__image-3 {
+    background: url(../../../../images/card3image.png);
+}
+
+.article-1 {
+    background: url(../../../../images/article1image.png);
+}
+
+.article-2 {
+    background: url(../../../../images/article2image.png);
+}
+
+.article-3 {
+    background: url(../../../../images/article3image.png);
+}

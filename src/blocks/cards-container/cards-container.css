@@ -1,0 +1,31 @@
+@import url(./__card/cards-container__card.css);
+@import url(../button/button_small-square.css);
+
+.cards-container {
+    margin: 0 auto;
+    max-width: 1232px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, calc((100% - 32px)/3));
+    grid-gap: 16px;
+}
+
+@media (max-width: 768px) {
+    .cards-container {
+        grid-template-columns: repeat(auto-fill, calc((100% - 16px)/3));
+        grid-gap: 8px;    
+    }
+}
+
+@media (max-width: 640px) {
+    .cards-container {
+        grid-template-columns: repeat(auto-fill, calc((100% - 16px)/2));
+        grid-gap: 16px;    
+    }
+}
+
+@media (max-width: 425px) {
+    .cards-container {
+        grid-template-columns: repeat(auto-fill, 100%);
+        grid-gap: 8px;    
+    }
+}

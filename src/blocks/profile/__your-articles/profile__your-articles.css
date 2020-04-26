@@ -1,0 +1,23 @@
+.profile__your-articles {
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 1.33;
+    color: rgba(26, 27, 34, 0.5);
+
+    margin: 0 auto;
+}
+
+@media (max-width:768px) {
+    .profile__your-articles {
+        font-size: 14px;
+        line-height: 1.71;
+    }
+}
+
+@media (max-width: 640px) {
+    .profile__your-articles {
+        font-size: 12px;
+    }
+}

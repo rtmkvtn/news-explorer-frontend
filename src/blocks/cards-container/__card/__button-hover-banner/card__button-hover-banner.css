@@ -1,0 +1,26 @@
+@import url(./__text/button-hover-banner__text.css);
+
+.card__button-hover-banner {
+    height: 40px;
+    padding: 0 12px;
+
+    display: block;
+    position: absolute;
+    border-radius: 10px;
+    top: 24px;
+    right: 69px;
+    background-color: #fff;
+}
+
+@media (max-width: 1024px) {
+    .card__button-hover-banner {
+        top: 61px;
+        right: 16px;
+    }
+}
+
+@media (max-width: 768px) {
+    .card__button-hover-banner {
+        display: none;
+    }
+}

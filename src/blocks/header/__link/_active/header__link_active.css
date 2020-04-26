@@ -1,0 +1,19 @@
+.header__link_active {
+    padding-bottom: 26px;
+    box-sizing: border-box;
+    border-bottom: 3px solid white;
+    opacity: 1 !important;
+}
+
+@media (max-width: 768px) {
+    .header__link_active {
+        padding-bottom: 20px;
+    }   
+}
+
+@media (max-width: 640px) {
+    .header__link_active {
+        padding-bottom: 0;
+        border-bottom: none;
+    }   
+}
