@@ -4,8 +4,8 @@
   "description": "frontend for news explorer",
   "main": "index.js",
   "scripts": {
-    "build": "rimraf dist && cross-env NODE_ENV=production webpack --mode production",
-    "dev": "NODE_ENV=development webpack-dev-server --mode development --open --watch",
+    "build": "rimraf dist && cross-env webpack --mode production",
+    "dev": "webpack-dev-server --mode development --open --watch",
     "deploy": "npm run build && gh-pages -d dist"
   },
   "repository": {
