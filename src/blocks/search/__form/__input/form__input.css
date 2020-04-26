@@ -13,6 +13,12 @@
     box-sizing: border-box;
     border-radius: 100px;
     border: 1px solid #d1d2d6;
+    outline: none;
+    backdrop-filter: blur(1px);
+}
+
+.form__input:focus {
+    caret-color: #2f71e5;
 }
 
 @media (max-width: 768px) {

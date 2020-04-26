@@ -12,14 +12,12 @@
     font-weight: 500;
     font-size: 18px;
     line-height: 24px;
+
+    outline: none;
 }
 
 .button_big-oval:hover {
     cursor: pointer;
-}
-
-.button_big-oval:active {
-    outline: none;
 }
 
 .button_big-oval::-moz-focus-inner {

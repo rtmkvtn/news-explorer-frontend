@@ -5,7 +5,6 @@
     margin: 64px auto 80px;
     width: 608px;
     position: relative;
-    backdrop-filter: blur(8px);
 }
 
 @media (max-width: 768px) {

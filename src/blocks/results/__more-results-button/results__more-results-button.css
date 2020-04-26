@@ -18,7 +18,7 @@
 }
 
 .results__more-results-button:active {
-    opacity: .5;
+    opacity: .9;
 }
 
 @media (max-width: 768px) {

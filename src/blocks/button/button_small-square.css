@@ -4,6 +4,8 @@
     box-sizing: border-box;
     border-radius: 8px;
     background-color: #fff;
+
+    outline: none;
 }
 
 .button_small-square:hover {
