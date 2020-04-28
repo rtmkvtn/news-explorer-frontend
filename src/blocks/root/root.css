@@ -1,7 +1,7 @@
 @import url(./__section/root__section.css);
 
 .root {
-    width: 100%;
+    width: 100vw;
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;

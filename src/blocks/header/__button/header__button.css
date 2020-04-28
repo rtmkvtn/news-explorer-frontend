@@ -24,8 +24,8 @@
 @media (max-width: 640px) {
     .header__button {
         height: 56px;
-        width: 100%;
+        width: calc(100% - 32px);
         max-width: 375px;
-        margin-top: 44px;
+        margin: 44px auto 0;
     }
 }

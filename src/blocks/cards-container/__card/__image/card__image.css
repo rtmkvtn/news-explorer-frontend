@@ -3,6 +3,7 @@
     background-size: cover;
     margin: 0;
     height: 272px;
+    position: relative;
 
     box-sizing: border-box;
     border-top-left-radius: 10px;
