@@ -3,25 +3,27 @@
 @import url(./__key-words/profile__key-words.css);
 
 .profile {
-    padding: 40px 104px 56px;
+    max-width: 1232px;
+    width: calc(100% - 208px);
+    padding: 40px 0 56px;
+    margin: 0 auto;
 }
 
 @media (max-width: 1024px) {
     .profile {
-        padding-left: 64px;
-        padding-right: 64px;
+        width: calc(100% - 128px);
     }
 }
 
 @media (max-width: 768px) {
     .profile {
-        padding-left: 40px;
-        padding-right: 40px;
+        width: calc(100% - 80px);
     }
 }
 
 @media (max-width: 640px) {
     .profile {
-        padding: 8px 16px 32px;
+        width: calc(100% - 32px);
+        padding: 8px 0 32px;
     }
 }

@@ -6,7 +6,7 @@
     line-height: 1.33;
     color: #fff;
 
-    margin: 32px auto 0px;
+    margin-top: 32px;
     padding: 0;
     max-width: 608px;
 }
@@ -14,15 +14,13 @@
 @media (max-width: 768px) {
     .search__text {
         margin-top: 16px;
-        margin-left: calc(100vw * .22);
         max-width: 452px;
-        width: calc(100vw * .58);
+        width: 100%;
     }   
 }
 
 @media (max-width: 640px) {
     .search__text {
-        margin: 16px 16px 0;
-        width: inherit;
+        margin-top: 16px;
     }   
 }

@@ -28,12 +28,14 @@
     </header>
 
     <section class="root__section search">
-      <h1 class="search__title">Что в мире творится?</h1>
-      <p class="search__text">Находите самые свежие статьи на любую тему и сохраняйте в своём личном кабинете.</p>
-      <form class="search__form form">
-        <input type="text" placeholder="Введите тему новости" class="form__input">
-        <button class="form__button button_big-oval" title="Search">Искать</button>
-      </form>
+      <div class="search__container">  
+        <h1 class="search__title">Что в мире творится?</h1>
+        <p class="search__text">Находите самые свежие статьи на любую тему и сохраняйте в своём личном кабинете.</p>
+        <form class="search__form form">
+          <input type="text" placeholder="Введите тему новости" class="form__input" required minlength="2">
+          <button class="form__button button_big-oval" title="Search" disabled="disabled">Искать</button>
+        </form>
+      </div>
     </section>
 
     <!-- Login popup -->
@@ -105,7 +107,7 @@
 
     <!-- No result found search -->
     <!-- <section class="root__section nothing-found">
-      <img src="<%=require('./images/not-found.svg')%>" alt="" class="nothing-found__image">
+      <img src="<%=require('./images/not-found.svg').default%>" alt="" class="nothing-found__image">
       <h2 class="nothing-found__title">Ничего не найдено</h2>
       <p class="nothing-found__text">К сожалению по вашему запросу ничего не найдено.</p>
     </section> -->

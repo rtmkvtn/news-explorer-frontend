@@ -33,6 +33,6 @@
     .results__more-results-button {
         margin-top: 16px;
         max-width: 320px;
-        width: calc(100vw - 32px);
+        width: calc(100% - 32px);
     }
 }

@@ -3,13 +3,11 @@
 
 .author__caption {
     margin-left: 56px;
-    max-width: 600px;
 }
 
 @media (max-width: 768px) {
     .author__caption {
         margin-left: 32px;
-        max-width: 424px;
     }   
 }
 
