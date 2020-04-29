@@ -8,7 +8,7 @@
   <title>News Explorer</title>
   <link rel="icon" href="./images/FaviconN.png" />
   <link rel="shortcut icon" href="./images/FaviconN.png" />
-  <link rel="stylesheet" href="main/main.289f215fbede4edbcc91.css">
+  <link rel="stylesheet" href="main/main.5ed894bf42ccb3ebd033.css">
 </head>
 <body>
   <div class="root">
@@ -16,7 +16,7 @@
     <header class="root__section header">
       <div class="header__container">
         <h2 class="header__title">NewsExplorer</h2>
-        <nav class="header__links header__links_mobile"> <!-- Для мобильного меню в открытом виде нужно добавить класс сюда  header__links_mobile-->
+        <nav class="header__links"> <!-- Для мобильного меню в открытом виде нужно добавить класс сюда  header__links_mobile-->
           <a href="./index.html" class="header__link header__link_active" title="Main page">Главная</a>
           <a href="./secondary/index.html" class="header__link" title="Profile">Сохранённые статьи</a>
           <button class="header__button button_big-oval" title="Authorization">Авторизоваться</button>
@@ -28,12 +28,14 @@
     </header>
 
     <section class="root__section search">
-      <h1 class="search__title">Что в мире творится?</h1>
-      <p class="search__text">Находите самые свежие статьи на любую тему и сохраняйте в своём личном кабинете.</p>
-      <form class="search__form form">
-        <input type="text" placeholder="Введите тему новости" class="form__input" required minlength="2">
-        <button class="form__button button_big-oval" title="Search" disabled="disabled">Искать</button>
-      </form>
+      <div class="search__container">  
+        <h1 class="search__title">Что в мире творится?</h1>
+        <p class="search__text">Находите самые свежие статьи на любую тему и сохраняйте в своём личном кабинете.</p>
+        <form class="search__form form">
+          <input type="text" placeholder="Введите тему новости" class="form__input" required minlength="2">
+          <button class="form__button button_big-oval" title="Search" disabled="disabled">Искать</button>
+        </form>
+      </div>
     </section>
 
     <!-- Login popup -->
