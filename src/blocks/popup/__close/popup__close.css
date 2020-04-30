@@ -1,0 +1,13 @@
+.popup__close {
+  width: 26px;
+  position: absolute;
+  top: -49px;
+  right: -51px;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .popup__close {
+    display: none;
+  }
+}

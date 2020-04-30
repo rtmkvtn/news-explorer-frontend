@@ -1,0 +1,14 @@
+.popup__title {
+  margin: 0;
+  margin-bottom: 22px;
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 28px;
+  color: #1a1b22;
+}
+
+.popup__title_small {
+  margin-bottom: 14px;
+}

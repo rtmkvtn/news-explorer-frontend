@@ -1,0 +1,22 @@
+.popup__input {
+  opacity: .2;
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid rgba(0, 0, 0);
+  font-size: 14px;
+  line-height: 17px;
+  box-sizing: border-box;
+  padding: 9px 0 10px;
+  margin-bottom: 31px;
+}
+
+.popup__input:focus {
+  opacity: 1;
+  outline: none;
+  border-bottom: 1px solid rgba(0, 0, 0);
+}
+
+.popup__input::-moz-focus-inner {
+  opacity: 1;
+  border: 0;
+}

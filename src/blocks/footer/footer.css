@@ -1,0 +1,10 @@
+@import url('./__links/footer__links.css');
+@import url('./__links-container/footer__links-container.css');
+@import url('./__copyright/footer__copyright.css');
+@import url(./__container/footer__container.css);
+
+.footer {
+    width: 100%;
+}
+
+

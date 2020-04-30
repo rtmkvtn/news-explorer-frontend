@@ -1,0 +1,7 @@
+@import url('./__title/search-loading__title.css');
+@import url('../preloader/preloader.css');
+
+.search-loading {
+    padding: 80px 0;
+    background: #f5f6f7;
+}

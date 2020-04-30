@@ -1,0 +1,34 @@
+@import url(./_active/header__link_active.css);
+@import url(./_black/header__link_black.css);
+
+.header__link {
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 1.33;
+    margin-right: 32px;
+    text-decoration: none;
+    color: white;
+    opacity: .5;
+    transition: opacity linear .5s;
+}
+
+.header__link:hover {
+    opacity: 1;
+}
+
+@media (max-width: 768px) {
+    .header__link {
+        font-size: 16px;
+        margin-right: 16px;
+    }
+}
+
+@media (max-width: 640px) {
+    .header__link {
+        opacity: 1;
+        margin: 32px 16px 0;
+
+    }
+}

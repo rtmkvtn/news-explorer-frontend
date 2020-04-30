@@ -1,0 +1,20 @@
+.card__button-delete {
+    background: url('../../../../images/trash.svg') center no-repeat;
+    background-color: #fff;
+
+    position: absolute;
+    top: 24px;
+    right: 24px;
+}
+
+.card__button-delete:hover {
+    background: url('../../../../images/trashHover.svg') center no-repeat;
+    background-color: #fff;
+}
+
+@media (max-width: 1024px) {
+    .card__button-delete {
+        top: 16px;
+        right: 16px;
+    }
+}

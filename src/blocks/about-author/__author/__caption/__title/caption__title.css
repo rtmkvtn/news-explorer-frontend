@@ -1,0 +1,15 @@
+.caption__title {
+    font-family: 'RobotoSlab', Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 40px;
+    line-height: 1.0;
+}
+
+@media (max-width: 768px) {
+    .caption__title {
+        margin: 0 0;
+        font-size: 30px;
+        line-height: 1.33;
+    }   
+}

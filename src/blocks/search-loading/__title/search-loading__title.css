@@ -1,0 +1,13 @@
+.search-loading__title {
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 1.33;
+
+    color: #b6bcbf;
+
+    width: 280px;
+    margin: 24px auto 0;
+    text-align: center;
+}

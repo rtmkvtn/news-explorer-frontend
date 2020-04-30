@@ -1,0 +1,26 @@
+.search__text {
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 1.33;
+    color: #fff;
+
+    margin-top: 32px;
+    padding: 0;
+    max-width: 608px;
+}
+
+@media (max-width: 768px) {
+    .search__text {
+        margin-top: 16px;
+        max-width: 452px;
+        width: 100%;
+    }   
+}
+
+@media (max-width: 640px) {
+    .search__text {
+        margin-top: 16px;
+    }   
+}

@@ -1,0 +1,13 @@
+.caption__text {
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 1.35;
+}
+
+@media (max-width: 768px) {
+    .caption__text {
+        margin: 16px 0 0;
+    }   
+}

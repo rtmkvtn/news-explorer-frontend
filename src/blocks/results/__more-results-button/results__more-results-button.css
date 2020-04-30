@@ -1,0 +1,38 @@
+.results__more-results-button {
+    height: 64px;
+    width: 288px;
+    display: block;
+    margin: 64px auto 0;
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 1.33;
+    border: none;
+    background: #fff;
+}
+
+.results__more-results-button:hover {
+    cursor: pointer;
+    border: 1px solid gray;
+}
+
+.results__more-results-button:active {
+    opacity: .5;
+}
+
+@media (max-width: 768px) {
+    .results__more-results-button {
+        margin-top: 22px;
+        max-width: 240px;
+        height: 56px;
+    }
+}
+
+@media (max-width: 640px) {
+    .results__more-results-button {
+        margin-top: 16px;
+        max-width: 320px;
+        width: calc(100% - 32px);
+    }
+}

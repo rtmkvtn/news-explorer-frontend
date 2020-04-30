@@ -1,0 +1,17 @@
+@import url(./__title/header__title.css);
+@import url(./__link/header__link.css);
+@import url(./__button/header__button.css);
+@import url(./__container/header__container.css);
+@import url(./__links/header__links.css);
+@import url(./__menu-button/header__menu-button.css);
+
+.header {
+    width: 100%;
+    box-sizing: inherit;
+    border-bottom: initial;
+    box-shadow: inset 0px -1px 0px rgba(255, 255, 255, 0.2);
+}
+
+.header_black {
+    box-shadow: inset 0px -1px 0px #d1d2d6;
+}

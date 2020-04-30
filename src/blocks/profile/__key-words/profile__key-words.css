@@ -1,0 +1,27 @@
+.profile__key-words {
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 1.33;
+
+    margin-top: 30px;
+    margin-bottom: 0;
+}
+
+.profile__key-words span {
+    font-weight: bold;
+}
+
+@media (max-width:768px) {
+    .profile__key-words {
+        font-size: 14px;
+        margin-top: 16px;
+    }
+}
+
+@media (max-width: 640px) {
+    .profile__key-words {
+        font-size: 18px;
+    }
+}

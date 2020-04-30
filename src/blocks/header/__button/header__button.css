@@ -1,0 +1,31 @@
+@import url(../../button/button_big-oval.css);
+@import url(./_black/header__button_black.css);
+@import url(./__logout-img/button__logout-img.css);
+
+.header__button {
+    color: white;
+    height: 48px;
+    border: 1px solid white;
+    background: inherit;
+    position: relative;
+}
+
+.header__button:active {
+    opacity: .5;
+}
+
+@media (max-width: 768px) {
+    .header__button {
+        font-size: 16px;
+        height: 40px;
+    }
+}
+
+@media (max-width: 640px) {
+    .header__button {
+        height: 56px;
+        width: calc(100% - 32px);
+        max-width: 375px;
+        margin: 44px auto 0;
+    }
+}

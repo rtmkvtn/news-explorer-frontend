@@ -1,0 +1,27 @@
+@import url('./__input/form__input.css');
+@import url('./__button/form__button.css');
+
+.search__form {
+    margin: 64px auto 80px;
+    max-width: 608px;
+    width: 100%;
+    position: relative;
+}
+
+@media (max-width: 768px) {
+    .search__form {
+        margin: 48px 0;
+    }
+}
+
+@media (max-width: 640px) {
+    .search__form {
+        margin: 32px 0;
+    }   
+}
+
+@media (max-width: 425px) {
+    .search__form {
+        margin-top: 122px;
+    }
+}

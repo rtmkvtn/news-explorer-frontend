@@ -1,0 +1,13 @@
+.header__button_black {
+    color: #1a1b22 !important;
+    border: 1px solid #1a1b22 !important;
+    padding-right: 17px;
+    padding-left: 19px;
+}
+
+@media (max-width: 640px) {
+    .header__button_black {
+        color: white !important;
+        border: 1px solid white !important;
+    }
+}

@@ -1,0 +1,80 @@
+@font-face {
+  font-family: 'RobotoSlab';
+  font-style:  normal;
+  font-weight: bold;
+  src: local('RobotoSlab'),
+       url("./fonts/Robotoslabregular.woff2") format("woff2"),
+       url('./fonts/Robotoslabregular.woff') format('woff'),
+       url('./fonts/Robotoslabregular.ttf') format('ttf');
+}
+
+
+@font-face {
+  font-family: 'Roboto';
+  font-style:  normal;
+  font-weight: bold;
+  src: local('Roboto'),
+       url("./fonts/Robotobold.woff2") format("woff2"),
+       url('./fonts/Robotobold.woff') format('woff'),
+       url('./fonts/Robotobold.ttf') format('ttf'); 
+}
+
+
+
+@font-face {
+  font-family: 'RobotoSlab';
+  font-style:  normal;
+  font-weight: normal;
+  src: local('RobotoSlab'),
+       url("./fonts/Robotoslabregular.woff2") format("woff2"),
+       url('./fonts/Robotoslabregular.woff') format('woff'),
+       url('./fonts/Robotoslabregular.ttf') format('ttf');
+}
+
+@font-face {
+  font-family: 'Roboto';
+  font-style:  normal;
+  font-weight: normal;
+  src: local('Roboto'),
+       url("./fonts/Roboto.woff2") format("woff2"),
+       url('./fonts/Roboto.woff') format('woff'),
+       url('./fonts/Roboto.ttf') format('ttf'); 
+}
+
+@font-face {
+  font-family: 'Roboto';
+  font-style:  normal;
+  font-weight: 500;
+  src: local('Roboto'),
+       url("./fonts/Roboto.woff2") format("woff2"),
+       url('./fonts/Roboto.woff') format('woff'),
+       url('./fonts/Roboto.ttf') format('ttf'); 
+}
+
+@font-face {
+  font-family: 'Roboto';
+  font-style:  normal;
+  font-weight: 900;
+  src: local('Roboto'),
+       url("./fonts/Robotoblack.woff2") format("woff2"),
+       url('./fonts/Robotoblack.woff') format('woff'),
+       url('./fonts/Robotoblack.ttf') format('ttf'); 
+}
+
+@font-face {
+  font-family: 'SourceSansPro';
+  font-style:  normal;
+  font-weight: normal;
+  src: local('SourceSansPro'),
+       url("./fonts/sourcesanspro.woff2") format("woff2"),
+       url('./fonts/sourcesanspro.woff') format('woff'),
+       url('./fonts/sourcesanspro.ttf') format('ttf'); 
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Inter-regular'),
+        url('./fonts/inter-regular.woff') format('woff');
+}

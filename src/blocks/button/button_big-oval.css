@@ -1,0 +1,31 @@
+@import url(./__logout-img/button__logout-img.css);
+@import url(./__text/button__text.css);
+
+.button_big-oval {
+    border-radius: 100px;
+    padding: 0 12px;
+    box-sizing: border-box;
+    border: none;
+    
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;
+
+    outline: none;
+}
+
+.button_big-oval:hover {
+    cursor: pointer;
+}
+
+.button_big-oval::-moz-focus-inner {
+    border: 0;
+}
+
+@media (max-width: 768px) {
+    .button_big-oval {
+        font-size: 16px;
+    }
+}
