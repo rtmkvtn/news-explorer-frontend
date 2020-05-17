@@ -1,11 +1,11 @@
 @import url(./_active/header__link_black_active.css);
 
-.header__link_black {
-    color: #1a1b22 !important;
+.header__link._black {
+  color: #1a1b22 !important;
 }
 
 @media (max-width: 640px) {
-    .header__link_black {
-        color: white !important;
-    }
+  .header__link._black {
+    color: white !important;
+  }
 }

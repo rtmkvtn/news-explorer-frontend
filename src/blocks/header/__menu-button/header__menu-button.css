@@ -1,5 +1,9 @@
 @import url(./__icon/menu-button__icon.css);
 
+.header__menu-button {
+    z-index: 2;
+}
+
 @media (min-width: 640px) {
     .header__menu-button {
         display: none;

@@ -1,9 +1,15 @@
+@import url('./_black/button__logout-img_black.css');
+
 .button__logout-img {
-    fill: #1a1b22;
+  fill: #fff;
 }
 
 @media (max-width: 640px) {
-    .button__logout-img {
-        fill: #fff;
-    }
+  .button__logout-img {
+    fill: #fff;
+  }
+}
+
+.header__button._black .button__logout-img {
+  fill: #1a1b22;
 }

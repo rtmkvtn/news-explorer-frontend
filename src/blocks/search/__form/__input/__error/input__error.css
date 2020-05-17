@@ -1,0 +1,13 @@
+.input__error {
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 15px;
+  color: red;
+
+  position: fixed;
+  margin-left: 26px;
+  margin-top: -20px;
+  margin-bottom: 13px;
+}
