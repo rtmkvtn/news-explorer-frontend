@@ -74,9 +74,7 @@ export default class ProfilePageTitle extends BaseComponent {
     } else {
       const wordOne = this._makeContentForDOM(`<span>${this._keywords[0]}, </span>`);
       const wordTwo = this._makeContentForDOM(`<span>${this._keywords[1]}, </span>`);
-      const wordsOthers = this._makeContentForDOM(
-        `<span>и ${this._keywords.length - 2} другим.</span>`,
-      );
+      const wordsOthers = this._makeContentForDOM(`<span>и ${this._keywords.length - 2} другим.</span>`);
       this._words.appendChild(wordOne);
       this._words.appendChild(wordTwo);
       this._words.appendChild(wordsOthers);

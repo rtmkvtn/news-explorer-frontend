@@ -1,12 +1,9 @@
 import Popup from './Popup';
 import popupContent from '../utils/popupContent';
 import Form from './Form';
-import Validator from '../utils/Validator';
 import MainApi from '../api/MainApi';
 
-const form = (type, validator, mainApi, popupContext) => {
-  return new Form(type, validator, mainApi, popupContext);
-};
+const form = (type, mainApi, popupContext) => new Form(type, mainApi, popupContext);
 
 export default class PopupLogin extends Popup {
   constructor(state) {
@@ -52,7 +49,7 @@ export default class PopupLogin extends Popup {
         callback: this.switch,
       },
     ]);
-    this.form(this.state.signin, new Validator(), new MainApi(), this).addValidation();
+    this.form(this.state.signin, new MainApi(), this).addValidation();
   }
 
   switch() {

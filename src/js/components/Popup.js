@@ -1,5 +1,4 @@
 import BaseComponent from './BaseComponent';
-import popupContent from '../utils/popupContent';
 
 export default class Popup extends BaseComponent {
   constructor() {
@@ -9,7 +8,6 @@ export default class Popup extends BaseComponent {
     this._templ = null;
     this.close = this.close.bind(this);
   }
-  _chooseTempl() {}
 
   setContent() {
     this._content = this._makeContentForDOM(this._templ);
@@ -60,67 +58,3 @@ export default class Popup extends BaseComponent {
     }
   }
 }
-
-// export default class Popup extends BaseComponent {
-//   constructor(form, mainApi) {
-//     super();
-//     this.popup = document.querySelector('.popup');
-//     this.form = form;
-//     this.content = null;
-//     this._close = this._close.bind(this);
-//     this._mainApi = mainApi;
-//     this.type = 'signup';
-//   }
-
-// }
-
-// // export default class Popup extends BaseComponent {
-// //   constructor(type, validator, mainApi) {
-// //     super();
-// //     this._switch = this._switch.bind(this);
-// //     this._submit = this._submit.bind(this);
-// //   }
-
-// //   _submit(event) {
-// //     event.preventDefault();
-// //     if (this.type === 'register') {
-// //       this._mainApi
-// //         .signup(
-// //           document.forms.form.email.value,
-// //           document.forms.form.password.value,
-// //           document.forms.form.name.value,
-// //         )
-// //         .then((res) => {
-// //           const resp = res;
-// //           console.log(resp);
-// //           if (resp.message) {
-// //             this._showErrorOnSubmit(this.popup.querySelector('.submit__error'), resp.message, 5000);
-// //             // this.popup.querySelector('.submit__error').textContent = resp.message;
-// //           } else {
-// //             this._successPopupOpen();
-// //           }
-// //         });
-// //     } else {
-// //       this._mainApi.signin();
-// //     }
-// //   }
-
-// //   _switch() {
-// //     if (this.type === 'login') {
-// //       this.type = 'register';
-// //     } else {
-// //       this.type = 'login';
-// //     }
-// //     this._close();
-// //     this.content = this._chooseTemplate(this.type);
-// //     this.render();
-// //   }
-
-// //   _successPopupOpen() {
-// //     this.content.remove();
-// //     this.content = this._chooseTemplate('registered');
-// //     this.popup.appendChild(this.content);
-// //     this.popup.classList.add('popup_is-opened');
-// //     this._addListener(this.popup.querySelector('.popup__link'), 'click', this._switch);
-// //   }
-// // }

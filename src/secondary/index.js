@@ -1,7 +1,5 @@
 import './index.css';
-import MenuMobile from '../js/components/MenuMobile';
 import Header from '../js/components/Header';
-import NewsCardList from '../js/components/NewsCardList';
 import ProfilePageTitle from '../js/components/ProfilePageTitle';
 import SavedArticlesList from '../js/components/SavedArticlesList';
 
@@ -16,3 +14,5 @@ profileTitle.render();
 const articlesSection = document.querySelector('.articles');
 const userArticles = new SavedArticlesList(articlesSection);
 userArticles.render();
+
+export default profileTitle;

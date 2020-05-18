@@ -39,7 +39,8 @@ export default class MainAPI {
         return res.json().then((err) => err);
       })
       .catch((err) => {
-        err.message = 'Произошла ощибка на сервере, попробуйте снова позже';
+        const resErr = err;
+        resErr.message = 'Произошла ощибка на сервере, попробуйте снова позже';
         return err;
       });
   }
@@ -80,7 +81,15 @@ export default class MainAPI {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ keyword, title, text, date, source, link, image }),
+      body: JSON.stringify({
+        keyword,
+        title,
+        text,
+        date,
+        source,
+        link,
+        image,
+      }),
     })
       .then((res) => {
         if (res.ok) {

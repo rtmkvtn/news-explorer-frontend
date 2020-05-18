@@ -8,7 +8,6 @@ export default class MainForm extends BaseComponent {
     this._button = document.querySelector('.form__button');
     this._api = someApi;
     this._results = resultsClass;
-    this._validateInputElement = this._validateInputElement.bind(this);
   }
 
   setFormListeners() {
@@ -16,17 +15,20 @@ export default class MainForm extends BaseComponent {
       {
         element: this._input,
         event: 'input',
-        callback: this._validateInputElement,
+        callback: (evt) => this._handleInput(evt),
+      },
+      {
+        element: this._input,
+        event: 'invalid',
+        callback: (evt) => this._handleInvalid(evt),
       },
       {
         element: this._button,
         event: 'click',
-        callback: (evt) => this._submitHandler(),
+        callback: (evt) => this._submitHandler(evt),
       },
     ]);
   }
-
-  setServerError() {}
 
   _clear() {
     this._input.value = '';
@@ -37,27 +39,38 @@ export default class MainForm extends BaseComponent {
     this._disableForm();
     event.preventDefault();
     this._results.renderLoader();
-    this._api.getNews(this._input.value).then((res) => {
-      console.log(res);
-      this._results.clear();
-      if (res.totalResults === 0) {
-        this._results.renderNothingFound();
-        this._enableForm();
-      } else {
-        this._results.renderResults(res.articles, this._input.value);
-      }
-      this._clear();
-      this._enableForm();
-    });
+    this._api
+      .getNews(this._input.value)
+      .then((res) => {
+        console.log(res);
+        this._results.clear();
+        if (res.totalResults === 0) {
+          this._results.renderNothingFound();
+          this._enableForm();
+          return;
+        }
+        if (res.status === 'ok') {
+          this._results.renderResults(res.articles, this._input.value);
+        } else {
+          Promise.reject(res.message);
+        }
+        this._clear();
+      })
+      .catch((err) => this._setServerError(err));
   }
 
-  _validateInputElement() {
-    console.log(this);
-    if (!this._input.validity.valid) {
-      this._input.setCustomValidity('Введите слово для поиска');
-      this._disableForm();
-    } else {
-      this._input.setCustomValidity('');
+  _setServerError(err) {
+    this._results.renderError(err);
+  }
+
+  _handleInvalid() {
+    this._input.setCustomValidity('Введите ключевое слово для поиска');
+  }
+
+  _handleInput() {
+    this._input.setCustomValidity('');
+    this._input.reportValidity();
+    if (this._input.validity.valid) {
       this._enableForm();
     }
   }
@@ -69,6 +82,4 @@ export default class MainForm extends BaseComponent {
   _disableForm() {
     this._button.setAttribute('disabled', true);
   }
-
-  _getInfo() {}
 }

@@ -2,7 +2,7 @@ import BaseComponent from './BaseComponent';
 import MainAPI from '../api/MainApi';
 import dateFormatOptions from '../utils/dateFormatOptions';
 import defaultPics from '../utils/defaultPics';
-import ProfilePageTitle from './ProfilePageTitle';
+import profileTitle from '../../secondary/index';
 
 const dateFormat = require('dateformat');
 
@@ -70,6 +70,7 @@ export default class SavedArticle extends BaseComponent {
   _removeClickHandler() {
     this._getArticlesFromStorage();
     const cardId = this._userArticles.find((el) => el.title === this._title)._id;
+    console.log(cardId);
     this._api()
       .removeArticle(cardId)
       .then((res) => {
@@ -78,7 +79,7 @@ export default class SavedArticle extends BaseComponent {
         this._userArticles.splice(indexForRemove, 1);
         this._removeFromDOM();
         this._putArticlesToStorage();
-        document.location.href = '../secondary/index.html';
+        profileTitle.render();
       });
   }
 

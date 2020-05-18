@@ -9,6 +9,8 @@ export default class Header extends BaseComponent {
     this.nav = document.querySelector('.header__links');
     this.popup = popup;
 
+    this._mobileMenuButton = document.querySelector('.header__menu-button');
+
     this.state = {
       isLoggedIn: false,
       theme,
@@ -28,6 +30,8 @@ export default class Header extends BaseComponent {
   render() {
     this._buildNav();
     this.nav.children.forEach((child) => child.classList.add(this.state.theme));
+
+    this._addListener(this._mobileMenuButton, 'click', (evt) => this._mobileMenuOpen(evt));
   }
 
   onLoadRender() {
@@ -35,6 +39,10 @@ export default class Header extends BaseComponent {
       document.cookie = `jwt=${localStorage.jwt}`;
       this.changeLoggedState(localStorage.getItem('userName'));
     } else {
+      if (document.location.href.includes('secondary')) {
+        document.location.href = '../index.html';
+        return;
+      }
       this.render();
     }
   }
@@ -53,6 +61,7 @@ export default class Header extends BaseComponent {
       if (document.location.href.includes('secondary')) {
         this.toMainLink.classList.remove('header__link_active');
         this.toSecondaryLink.classList.add('header__link_active');
+        this.toSecondaryLink.setAttribute('href', '#');
       }
       this._addListener(this.button, 'click', (evt) => this.changeLoggedState(evt));
     } else {
@@ -60,5 +69,25 @@ export default class Header extends BaseComponent {
       this.nav.appendChild(this.button);
       this._addListener(this.button, 'click', (evt) => this.popup.open(evt));
     }
+  }
+
+  _mobileMenuOpen() {
+    this.nav.classList.add('header__links_mobile');
+    this._mobileMenuButton.firstElementChild.classList.remove('menu-button__icon');
+    this._mobileMenuButton.firstElementChild.classList.add('menu-button__icon_close');
+    this.header.querySelector('.header__title').classList.remove('header__title_black');
+    this._mobileMenuButton.removeEventListener('click', (evt) => this._mobileMenuOpen(evt));
+    this._addListener(this._mobileMenuButton, 'click', (evt) => this._mobileMenuClose(evt));
+  }
+
+  _mobileMenuClose() {
+    this.nav.classList.remove('header__links_mobile');
+    this._mobileMenuButton.firstElementChild.classList.remove('menu-button__icon_close');
+    this._mobileMenuButton.firstElementChild.classList.add('menu-button__icon');
+    if (this.state.theme) {
+      this.header.querySelector('.header__title').classList.add(`header__title${this.state.theme}`);
+    }
+    this._mobileMenuButton.removeEventListener('click', (evt) => this._mobileMenuClose(evt));
+    this._addListener(this._mobileMenuButton, 'click', (evt) => this._mobileMenuOpen(evt));
   }
 }

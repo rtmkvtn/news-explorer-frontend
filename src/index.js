@@ -1,5 +1,4 @@
 import './index.css';
-import MenuMobile from './js/components/MenuMobile';
 import Header from './js/components/Header';
 import PopupLogin from './js/components/PopupLogin';
 import NewsApi from './js/api/NewsApi';
@@ -12,7 +11,6 @@ if (!localStorage.jwt) {
   localStorage.setItem('userArticles', '[]');
 }
 
-// Обработка поиска
 const SearchResSection = document.querySelector('.results');
 const searchForm = new MainForm(
   new NewsApi(),
@@ -25,12 +23,5 @@ const popup = new PopupLogin();
 const header = new Header(popup);
 
 header.onLoadRender();
-
-const menuButton = document.querySelector('.header__menu-button');
-
-menuButton.addEventListener('click', () => {
-  const menu = new MenuMobile();
-  menu.open();
-});
 
 export default header;

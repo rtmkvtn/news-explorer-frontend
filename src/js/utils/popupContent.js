@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 const popupContent = {
   register: `
     <div class="popup__content">

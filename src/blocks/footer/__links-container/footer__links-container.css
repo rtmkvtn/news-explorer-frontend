@@ -3,16 +3,16 @@
 @import url('../__links-icons/footer__links-icons.css');
 
 .footer__links-container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: flex-end;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
 }
 
 @media (max-width: 640px) {
-    .footer__links-container {
-        width: 100%;
-        justify-content: space-between;
-        margin-bottom: 38px;
-    }
+  .footer__links-container {
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 38px;
+  }
 }

@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 const searchResults = {
   resultsTitle: `
     <h2 class="results__title section__title">Результаты поиска</h2>
@@ -29,6 +30,11 @@ const searchResults = {
   `,
   showMoreButton: `
     <button class="results__more-results-button button_big-oval" title="More results">Показать еще</button>
+  `,
+  serverError: `
+  <div class="root__section nothing-found serverError">
+    <h2 class="nothing-found__title serverError__title">Произошла ошибка на сервере!</h2>
+  </div>
   `,
 };
 

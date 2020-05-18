@@ -1,11 +1,15 @@
 @import url(./__icon/menu-button__icon.css);
 
 .header__menu-button {
-    z-index: 2;
+  z-index: 2;
+}
+
+.header__menu-button._black {
+  fill: #1a1b22;
 }
 
 @media (min-width: 640px) {
-    .header__menu-button {
-        display: none;
-    }   
+  .header__menu-button {
+    display: none;
+  }
 }

@@ -10,6 +10,7 @@ const api = () => new MainAPI();
 export default class NewsCardList extends BaseComponent {
   constructor(section) {
     super();
+    this._cardList = [];
     this._section = section;
     this._resultsTemplates = searchResults;
     this._card = card;
@@ -18,6 +19,7 @@ export default class NewsCardList extends BaseComponent {
 
   clear() {
     this._clearListeners();
+    this._cardList = [];
     this._section.innerHTML = '';
     this._section.classList.remove('_is-displayed');
   }
@@ -28,13 +30,18 @@ export default class NewsCardList extends BaseComponent {
     this._buttonMore = this._makeContentForDOM(this._resultsTemplates.showMoreButton);
     this._section.appendChild(this._makeContentForDOM(this._resultsTemplates.resultsTitle));
     this._section.appendChild(this._container);
-
-    this._cardList = newsList;
-    while (this._container.childNodes.length !== 3) {
-      if (this._cardList.length === 0) {
-        return;
-      }
+    if (newsList.length === 1) {
+      this._cardList = newsList;
       this._renderOneCard(this._keyWord);
+    } else {
+      newsList.forEach((el) => this._cardList.push(el));
+      while (this._container.childNodes.length !== 3) {
+        if (this._cardList.length === 0) {
+          return;
+        }
+
+        this._renderOneCard(this._keyWord);
+      }
     }
     this._section.classList.add('_is-displayed');
 
@@ -63,7 +70,11 @@ export default class NewsCardList extends BaseComponent {
   }
 
   _renderOneCard(keyWord) {
-    const article = this._cardList[0];
+    let article = null;
+    if (this._cardList.length === 1) {
+      article = this._cardList;
+    }
+    article = this._cardList[0];
     const cardEl = this._card({ article }, keyWord).render();
     this._container.appendChild(cardEl);
     this._cardList.shift();
@@ -80,5 +91,8 @@ export default class NewsCardList extends BaseComponent {
     this._section.classList.add('_is-displayed');
   }
 
-  renderError() {}
+  renderError() {
+    this._section.appendChild(this._makeContentForDOM(this._resultsTemplates.serverError));
+    this._section.classList.add('_is-displayed');
+  }
 }

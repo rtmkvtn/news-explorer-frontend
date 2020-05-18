@@ -16,13 +16,11 @@ export default class NewsCard extends BaseComponent {
     this._api = mainApi;
     this._keyWord = keyWord;
     this._card = null;
-    this._source = cardObj.article.source.name;
+    this._source = cardObj.article.source.name ? cardObj.article.source.name : 'Источник не указан';
     this._title = cardObj.article.title;
     this._description = cardObj.article.description ? cardObj.article.description : 'Нет текста';
     this._url = cardObj.article.url;
-    this._image = cardObj.article.urlToImage
-      ? cardObj.article.urlToImage
-      : `http://localhost:8080/${defaultPics[Math.floor(Math.random() * defaultPics.length)]}`;
+    this._image = cardObj.article.urlToImage ? cardObj.article.urlToImage : 'http://no-image.com/pic.jpg';
     this._dateForApi = cardObj.article.publishedAt;
     this._date = dateFormat(cardObj.article.publishedAt, 'dd mmmm, yyyy');
 

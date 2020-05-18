@@ -17,9 +17,8 @@ export default class BaseComponent {
 
   // наполняет массив пользовательских статей
   _addDataToUserArticles(articles) {
-    const obj = {};
-    const userArticles = this._userArticles;
     articles.forEach((el) => {
+      const obj = {};
       obj._id = el._id;
       obj.title = el.title;
       obj.keyword = el.keyword;
@@ -29,7 +28,7 @@ export default class BaseComponent {
       obj.text = el.text;
       obj.source = el.source;
 
-      userArticles.push(obj);
+      this._userArticles.push(obj);
     });
   }
 
