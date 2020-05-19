@@ -31,7 +31,7 @@ export default class Popup extends BaseComponent {
       {
         element: this._popup.querySelector('.popup__link'),
         event: 'click',
-        callback: this.switch,
+        callback: this._switch,
       },
     ]);
   }
