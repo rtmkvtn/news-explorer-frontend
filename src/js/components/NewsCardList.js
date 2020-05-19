@@ -4,15 +4,18 @@ import NewsCard from './NewsCard';
 import searchResults from '../utils/searchResults';
 import MainAPI from '../api/MainApi';
 
+// Передать класс карточки для рендера результатов
 const card = ({ article }, keyWord) => new NewsCard({ article }, keyWord);
 const api = () => new MainAPI();
 
 export default class NewsCardList extends BaseComponent {
   constructor(section) {
     super();
+
     this._cardList = [];
     this._section = section;
     this._resultsTemplates = searchResults;
+
     this._card = card;
     this._maniApi = api;
   }
@@ -58,6 +61,7 @@ export default class NewsCardList extends BaseComponent {
     ]);
   }
 
+  // Рендерит еще три карточки к результатам при нажатии на кнопку
   _moreResults() {
     const stop = this._container.childNodes.length + 3;
     while (this._container.childNodes.length !== stop) {

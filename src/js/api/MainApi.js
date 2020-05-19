@@ -1,9 +1,8 @@
-/* eslint-disable no-underscore-dangle */
-import ApiOptions from '../utils/ApiOptions';
+import apiOptions from '../utils/ApiOptions';
 
 export default class MainAPI {
   constructor() {
-    this._baseURL = ApiOptions.baseURL;
+    this._baseURL = apiOptions.mainApi.baseUrl;
   }
 
   signup(email, password, name) {
@@ -20,7 +19,11 @@ export default class MainAPI {
         }
         return res.json().then((err) => err);
       })
-      .catch((err) => err);
+      .catch((err) => {
+        const resErr = err;
+        resErr.message = 'Произошла ощибка на сервере, попробуйте снова позже';
+        return err;
+      });
   }
 
   signin(email, password) {
@@ -56,7 +59,11 @@ export default class MainAPI {
         }
         return res.json().then((err) => err);
       })
-      .catch((err) => err);
+      .catch((err) => {
+        const resErr = err;
+        resErr.message = 'Произошла ощибка на сервере, попробуйте снова позже';
+        return err;
+      });
   }
 
   getArticles() {
@@ -71,7 +78,11 @@ export default class MainAPI {
         return res.json().then((err) => err);
       })
       .then((json) => json)
-      .catch((err) => console.log(err.status));
+      .catch((err) => {
+        const resErr = err;
+        resErr.message = 'Произошла ощибка на сервере, попробуйте снова позже';
+        return err;
+      });
   }
 
   createArticle(keyword, title, text, date, source, link, image) {
@@ -97,7 +108,11 @@ export default class MainAPI {
         }
         return res.json().then((err) => err);
       })
-      .catch((err) => console.log(err.status));
+      .catch((err) => {
+        const resErr = err;
+        resErr.message = 'Произошла ощибка на сервере, попробуйте снова позже';
+        return err;
+      });
   }
 
   removeArticle(id) {
@@ -114,6 +129,10 @@ export default class MainAPI {
         }
         return res.json().then((err) => err);
       })
-      .catch((err) => console.log(err.status));
+      .catch((err) => {
+        const resErr = err;
+        resErr.message = 'Произошла ощибка на сервере, попробуйте снова позже';
+        return err;
+      });
   }
 }

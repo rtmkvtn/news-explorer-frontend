@@ -1,23 +1,23 @@
 import BaseComponent from '../components/BaseComponent';
+import apiOptions from '../utils/ApiOptions';
 
 export default class NewsApi extends BaseComponent {
   constructor() {
     super();
-    this._baseUrl = 'http://newsapi.org/v2/everything';
-    this._apiKey = 'ff22a4b7d005462cb601b64239d9b157';
+    this._baseUrl = apiOptions.newsApi.baseURL;
+    this._apiKey = apiOptions.newsApi.token;
     this._date = new Date();
     this._reqUrl = null;
   }
 
   _reqUrlFormer(keyWord) {
-    this._reqUrl = `${this._baseUrl}?q=${keyWord}&from=${this._date.setDate(
-      this._date.getDate() - 7,
-    )}&language=ru&to=${this._date}&pageSize=100`;
+    this._reqUrl = `${this._baseUrl}?q=${keyWord}&from=${this._date.setDate(this._date.getDate() - 7)}&language=ru&to=${
+      this._date
+    }&pageSize=100`;
   }
 
   getNews(keyWord) {
     this._reqUrlFormer(keyWord);
-    console.log(this._reqUrl);
 
     return fetch(`${this._reqUrl}`, {
       headers: {
@@ -30,6 +30,10 @@ export default class NewsApi extends BaseComponent {
         }
         return res.json().then((err) => err);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        const resErr = err;
+        resErr.message = 'Произошла ощибка на сервере, попробуйте снова позже';
+        return err;
+      });
   }
 }

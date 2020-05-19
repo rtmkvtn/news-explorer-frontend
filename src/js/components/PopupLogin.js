@@ -1,22 +1,21 @@
 import Popup from './Popup';
 import popupContent from '../utils/popupContent';
 import Form from './Form';
-import MainApi from '../api/MainApi';
 
 const form = (type, mainApi, popupContext) => new Form(type, mainApi, popupContext);
 
 export default class PopupLogin extends Popup {
   constructor(state) {
     super();
-    this.form = form;
-    this.switch = this.switch.bind(this);
-    this.state = {
+    this._form = form;
+    this._switch = this.switch.bind(this);
+    this._state = {
       signin: state,
     };
   }
 
   _chooseTempl() {
-    if (!this.state.signin) {
+    if (!this._state.signin) {
       this._templ = popupContent.register;
     } else {
       this._templ = popupContent.login;
@@ -46,14 +45,14 @@ export default class PopupLogin extends Popup {
       {
         element: this._popup.querySelector('.popup__link'),
         event: 'click',
-        callback: this.switch,
+        callback: this._switch,
       },
     ]);
-    this.form(this.state.signin, new MainApi(), this).addValidation();
+    this._form(this._state.signin, this).addValidation();
   }
 
   switch() {
-    this.state.signin = !this.state.signin;
+    this._state.signin = !this._state.signin;
     this.clearContent();
     this.setContent();
   }

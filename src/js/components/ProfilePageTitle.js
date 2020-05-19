@@ -83,7 +83,6 @@ export default class ProfilePageTitle extends BaseComponent {
 
   // рендерит блок с количеством статей, в зависимости от их количества
   _renderTitle() {
-    console.log(this._numOfArticles);
     if (this._numOfArticles === 0) {
       this._titleTempl = `${localStorage.userName}, у вас пока нет сохраненных статей.`;
     } else if (

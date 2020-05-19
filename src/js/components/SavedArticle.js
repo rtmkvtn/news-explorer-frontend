@@ -3,6 +3,7 @@ import MainAPI from '../api/MainApi';
 import dateFormatOptions from '../utils/dateFormatOptions';
 import defaultPics from '../utils/defaultPics';
 import profileTitle from '../../secondary/index';
+import cardsTemplates from '../utils/cardsTemplates';
 
 const dateFormat = require('dateformat');
 
@@ -26,24 +27,16 @@ export default class SavedArticle extends BaseComponent {
   }
 
   render() {
-    this._template = `
-    <article class="cards-container__card card">
-      <div class="card__image" style="background-image: url(${this._image}), 
-      url(${defaultPics[Math.floor(Math.random() * defaultPics.length)]})">
-        <button class="card__button-delete button_small-square" title="Remove article"></button>
-        <div class="card__key-word key-word">
-          <p class="key-word__text">${this._keyWord}</p>
-        </div>
-        <div class="card__button-hover-banner button-hover-banner">
-          <p class="button-hover-banner__text">Удалить из сохранённых</p>
-        </div>
-      </div>
-      <p class="card__date">${this._date}</p>
-      <h3 class="card__title">${this._title}</h3>
-      <p class="card__text">${this._description}</p>
-      <a href="${this._url}" target="_blank" class="card__link">${this._source}</a>
-    </article>
-  `;
+    this._template = cardsTemplates.cardSaved(
+      this._image,
+      defaultPics[Math.floor(Math.random() * defaultPics.length)],
+      this._keyWord,
+      this._date,
+      this._title,
+      this._description,
+      this._url,
+      this._source,
+    );
     this._card = this._makeContentForDOM(this._template);
     this._icon = this._card.querySelector('.button_small-square');
     this._hoverBanner = this._card.querySelector('.card__button-hover-banner');
@@ -70,22 +63,25 @@ export default class SavedArticle extends BaseComponent {
   _removeClickHandler() {
     this._getArticlesFromStorage();
     const cardId = this._userArticles.find((el) => el.title === this._title)._id;
-    console.log(cardId);
+
     this._api()
       .removeArticle(cardId)
       .then((res) => {
-        console.log(res);
+        if (res.message.includes('не найден')) {
+          throw new Error(res.message);
+        }
         const indexForRemove = this._userArticles.findIndex((el) => el._id === cardId);
         this._userArticles.splice(indexForRemove, 1);
+        this._clearListeners();
         this._removeFromDOM();
         this._putArticlesToStorage();
-        profileTitle.render();
-      });
+      })
+      .catch((err) => alert(err))
+      .finally(() => profileTitle.render());
   }
 
   _removeFromDOM() {
     this._clearListeners();
-    console.log(this);
     this._card.remove();
   }
 

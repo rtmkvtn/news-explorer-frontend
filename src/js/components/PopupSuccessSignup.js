@@ -7,13 +7,13 @@ const popupLogin = (signinState) => new PopupLogin(signinState);
 export default class PopupSuccessSignup extends Popup {
   constructor() {
     super();
-    this.switch = this.switch.bind(this);
+    this._switch = this.switch.bind(this);
     this._templ = popupContent.successRegister;
-    this.popupLogin = popupLogin;
+    this._popupLogin = popupLogin;
   }
 
   switch() {
     this.close();
-    this.popupLogin(true).open();
+    this._popupLogin(true).open();
   }
 }

@@ -42,17 +42,15 @@ export default class MainForm extends BaseComponent {
     this._api
       .getNews(this._input.value)
       .then((res) => {
-        console.log(res);
         this._results.clear();
         if (res.totalResults === 0) {
           this._results.renderNothingFound();
-          this._enableForm();
           return;
         }
         if (res.status === 'ok') {
           this._results.renderResults(res.articles, this._input.value);
         } else {
-          Promise.reject(res.message);
+          throw new Error(res.message);
         }
         this._clear();
       })
@@ -64,6 +62,8 @@ export default class MainForm extends BaseComponent {
   }
 
   _handleInvalid() {
+    this._disableForm();
+
     this._input.setCustomValidity('Введите ключевое слово для поиска');
   }
 

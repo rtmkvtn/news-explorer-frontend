@@ -61,6 +61,11 @@ const popupContent = {
       <a href="#" class="popup__link">Выполнить вход</a>
     </div>
   `,
+  loader: `
+    <div>
+      <i class="circle-preloader"></i>
+    </div>
+  `,
 };
 
 export default popupContent;

@@ -15,7 +15,7 @@ export default class BaseComponent {
     localStorage.setItem('userArticles', JSON.stringify(this._userArticles));
   }
 
-  // наполняет массив пользовательских статей
+  // наполняет массив пользовательских статей из массива статей
   _addDataToUserArticles(articles) {
     articles.forEach((el) => {
       const obj = {};
