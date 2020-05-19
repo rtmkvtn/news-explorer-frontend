@@ -17,7 +17,7 @@ const cardsTemplates = {
   cardSaved: (image, altImage, keyWord, date, title, text, url, source) => `
     <article class="cards-container__card card">
       <div class="card__image" style="background-image: url(${image}), 
-        url(${altImage})">
+        url(.${altImage})">
         <button class="card__button-delete button_small-square" title="Remove article"></button>
         <div class="card__key-word key-word">
           <p class="key-word__text">${keyWord}</p>
