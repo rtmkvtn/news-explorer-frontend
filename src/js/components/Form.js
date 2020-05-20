@@ -1,21 +1,19 @@
 /* eslint-disable no-param-reassign */
 import BaseComponent from './BaseComponent';
 import popupContent from '../utils/popupContent';
-import PopupSuccessSignup from './PopupSuccessSignup';
 import CustomValidator from '../utils/customValidator';
 import MainAPI from '../api/MainApi';
 
 // Нужно передавать попап, который появится после успешной регистрации и валидатор для формы,
 // устанавливающий кастомные ошибки валидации
-const successSignupPopup = () => new PopupSuccessSignup();
 const customValidator = (input, error) => new CustomValidator(input, error);
 const mainApi = () => new MainAPI();
 
 export default class Form extends BaseComponent {
-  constructor(state, popupContext) {
+  constructor(state, popupContext, popupSuccess) {
     super();
-    this._successSignupPopup = successSignupPopup;
     this._customValidator = customValidator;
+    this._popupSuccess = popupSuccess;
 
     this._form = document.forms.form;
     this._button = document.querySelector('.popup__button');
@@ -144,7 +142,7 @@ export default class Form extends BaseComponent {
           return Promise.reject(res.message);
         }
         this._popupContext.close();
-        return this._successSignupPopup(popupContent.successRegister).open();
+        return this._popupSuccess.open();
       })
       .catch((err) => this.setServerError(err))
       .finally(() => {

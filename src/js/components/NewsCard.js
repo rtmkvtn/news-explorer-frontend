@@ -1,14 +1,11 @@
 /* eslint-disable indent */
 import BaseComponent from './BaseComponent';
 import defaultPics from '../utils/defaultPics';
-import MainAPI from '../api/MainApi';
 import cardsTemplates from '../utils/cardsTemplates';
 import serverErrors from '../constants/serverErrors';
 
-const mainApi = () => new MainAPI();
-
 export default class NewsCard extends BaseComponent {
-  constructor(cardObj, keyWord) {
+  constructor(cardObj, keyWord, mainApi) {
     super();
     this._api = mainApi;
 
@@ -28,6 +25,7 @@ export default class NewsCard extends BaseComponent {
   }
 
   render() {
+    console.log(this);
     this._template = cardsTemplates.cardFromNewsApi(
       this._image,
       defaultPics[Math.floor(Math.random() * defaultPics.length)],
@@ -66,7 +64,7 @@ export default class NewsCard extends BaseComponent {
   _removeArticle() {
     this._getArticlesFromStorage();
     const cardId = this._userArticles.find((el) => el.title === this._title)._id;
-    this._api()
+    this._api
       .removeArticle(cardId)
       .then((res) => {
         const resp = res;
@@ -87,7 +85,7 @@ export default class NewsCard extends BaseComponent {
   }
 
   _addArticle() {
-    this._api()
+    this._api
       .createArticle(
         this._keyWord.toLowerCase(),
         this._title,

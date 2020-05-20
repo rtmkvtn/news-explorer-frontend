@@ -10,8 +10,6 @@ export default class NewsApi {
   }
 
   _reqUrlFormer(keyWord) {
-    console.log(this._dateFrom);
-    console.log(this._dateTo);
     this._reqUrl = `${this._baseUrl}?q=${keyWord}&from=${this._dateFrom}&language=ru&to=${this._dateTo}&pageSize=100`;
   }
 

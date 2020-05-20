@@ -1,6 +1,7 @@
 import Popup from './Popup';
 import popupContent from '../utils/popupContent';
 import Form from './Form';
+import PopupSuccessSignup from './PopupSuccessSignup';
 
 const form = (type, mainApi, popupContext) => new Form(type, mainApi, popupContext);
 
@@ -48,7 +49,7 @@ export default class PopupLogin extends Popup {
         callback: this._switch,
       },
     ]);
-    this._form(this._state.signin, this).addValidation();
+    this._form(this._state.signin, this, new PopupSuccessSignup(new PopupLogin(true))).addValidation();
   }
 
   switch() {

@@ -1,5 +1,4 @@
 import BaseComponent from './BaseComponent';
-import MainAPI from '../api/MainApi';
 import dateFormatOptions from '../utils/dateFormatOptions';
 import defaultPics from '../utils/defaultPics';
 import profileTitle from '../../secondary/index';
@@ -10,10 +9,8 @@ const dateFormat = require('dateformat');
 
 dateFormat.i18n = dateFormatOptions;
 
-const mainApi = () => new MainAPI();
-
 export default class SavedArticle extends BaseComponent {
-  constructor(article) {
+  constructor(article, mainApi) {
     super();
     this._id = article.article._id;
     this._api = mainApi;
@@ -23,7 +20,7 @@ export default class SavedArticle extends BaseComponent {
     this._description = article.article.text;
     this._url = article.article.link;
     this._image = article.article.image;
-    this._date = dateFormat(article.article.date, 'dd mmmm, yyyy');
+    this._date = new Date(Date.parse(article.article.date));
     this._card = null;
   }
 
@@ -32,7 +29,7 @@ export default class SavedArticle extends BaseComponent {
       this._image,
       defaultPics[Math.floor(Math.random() * defaultPics.length)],
       this._keyWord,
-      this._date,
+      this._date.toLocaleString('ru', { day: 'numeric', month: 'long', year: 'numeric' }),
       this._title,
       this._description,
       this._url,
@@ -65,7 +62,7 @@ export default class SavedArticle extends BaseComponent {
     this._getArticlesFromStorage();
     const cardId = this._userArticles.find((el) => el.title === this._title)._id;
 
-    this._api()
+    this._api
       .removeArticle(cardId)
       .then((res) => {
         const resp = res;

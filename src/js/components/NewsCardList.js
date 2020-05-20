@@ -2,14 +2,12 @@
 import BaseComponent from './BaseComponent';
 import NewsCard from './NewsCard';
 import searchResults from '../utils/searchResults';
-import MainAPI from '../api/MainApi';
 
 // Передать класс карточки для рендера результатов
-const card = ({ article }, keyWord) => new NewsCard({ article }, keyWord);
-const api = () => new MainAPI();
+const card = ({ article }, keyWord, mainApi) => new NewsCard({ article }, keyWord, mainApi);
 
 export default class NewsCardList extends BaseComponent {
-  constructor(section) {
+  constructor(section, api) {
     super();
 
     this._cardList = [];
@@ -17,7 +15,7 @@ export default class NewsCardList extends BaseComponent {
     this._resultsTemplates = searchResults;
 
     this._card = card;
-    this._maniApi = api;
+    this._mainApi = api;
   }
 
   clear() {
@@ -79,7 +77,7 @@ export default class NewsCardList extends BaseComponent {
       article = this._cardList;
     }
     article = this._cardList[0];
-    const cardEl = this._card({ article }, keyWord).render();
+    const cardEl = this._card({ article }, keyWord, this._mainApi).render();
     this._container.appendChild(cardEl);
     this._cardList.shift();
   }
