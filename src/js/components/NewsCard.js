@@ -4,6 +4,7 @@ import dateFormatOptions from '../utils/dateFormatOptions';
 import defaultPics from '../utils/defaultPics';
 import MainAPI from '../api/MainApi';
 import cardsTemplates from '../utils/cardsTemplates';
+import serverErrors from '../constants/serverErrors';
 
 const dateFormat = require('dateformat');
 
@@ -73,16 +74,21 @@ export default class NewsCard extends BaseComponent {
     this._api()
       .removeArticle(cardId)
       .then((res) => {
-        if (res.ok) {
-          const indexForRemove = this._userArticles.findIndex((el) => el._id === cardId);
-          this._userArticles.splice(indexForRemove, 1);
-          this._icon.classList.remove('_clicked');
-          this._putArticlesToStorage();
-        } else {
+        const resp = res;
+        // Надо на бэке переписать отправку ответов, чтобы статусКод добавлял ко всем
+        // Пока так, через проверку сообщения проверка.
+        if (resp.message && !resp.message.includes('удалён')) {
           throw new Error(res.message);
         }
+        const indexForRemove = this._userArticles.findIndex((el) => el._id === cardId);
+        this._userArticles.splice(indexForRemove, 1);
+        this._icon.classList.remove('_clicked');
+        this._putArticlesToStorage();
       })
-      .catch((err) => alert(err));
+      .catch((err) => {
+        this._icon.classList.remove('_clicked');
+        alert(`${serverErrors.DEFAULT} Текст ошибки: ${err}`);
+      });
   }
 
   _addArticle() {
@@ -97,27 +103,29 @@ export default class NewsCard extends BaseComponent {
         this._image,
       )
       .then((res) => {
-        const resp = res;
-        if (resp.message) {
-          throw new Error(resp.message);
-        } else {
-          this._icon.classList.add('_clicked');
-          const objForStorage = {};
-          objForStorage._id = resp._id;
-          objForStorage.title = resp.title;
-          objForStorage.keyword = resp.keyword;
-          objForStorage.date = resp.date;
-          objForStorage.image = resp.image;
-          objForStorage.link = resp.link;
-          objForStorage.text = resp.text;
-          objForStorage.source = resp.source;
-
-          this._getArticlesFromStorage();
-          this._userArticles.push(objForStorage);
-          this._putArticlesToStorage();
+        if (res.message) {
+          throw new Error(res.message);
         }
+        this._icon.classList.add('_clicked');
+        this._putNewCardToStorage(res);
       })
-      .catch((err) => alert(err));
+      .catch((err) => alert(`${serverErrors.DEFAULT} Текст ошибки: ${err}`));
+  }
+
+  _putNewCardToStorage(card) {
+    const objForStorage = {};
+    objForStorage._id = card._id;
+    objForStorage.title = card.title;
+    objForStorage.keyword = card.keyword;
+    objForStorage.date = card.date;
+    objForStorage.image = card.image;
+    objForStorage.link = card.link;
+    objForStorage.text = card.text;
+    objForStorage.source = card.source;
+
+    this._getArticlesFromStorage();
+    this._userArticles.push(objForStorage);
+    this._putArticlesToStorage();
   }
 
   _templClickHandler() {

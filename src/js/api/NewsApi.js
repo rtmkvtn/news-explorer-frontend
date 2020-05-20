@@ -1,9 +1,7 @@
-import BaseComponent from '../components/BaseComponent';
 import apiOptions from '../utils/ApiOptions';
 
-export default class NewsApi extends BaseComponent {
+export default class NewsApi {
   constructor() {
-    super();
     this._baseUrl = apiOptions.newsApi.baseURL;
     this._apiKey = apiOptions.newsApi.token;
     this._date = new Date();
@@ -32,7 +30,7 @@ export default class NewsApi extends BaseComponent {
       })
       .catch((err) => {
         const resErr = err;
-        resErr.message = 'Произошла ощибка на сервере, попробуйте снова позже';
+        resErr.message = 'Произошла ошибка на сервере, попробуйте снова позже';
         return err;
       });
   }

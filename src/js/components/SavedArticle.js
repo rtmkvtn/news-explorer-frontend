@@ -4,6 +4,7 @@ import dateFormatOptions from '../utils/dateFormatOptions';
 import defaultPics from '../utils/defaultPics';
 import profileTitle from '../../secondary/index';
 import cardsTemplates from '../utils/cardsTemplates';
+import serverErrors from '../constants/serverErrors';
 
 const dateFormat = require('dateformat');
 
@@ -67,7 +68,8 @@ export default class SavedArticle extends BaseComponent {
     this._api()
       .removeArticle(cardId)
       .then((res) => {
-        if (res.message.includes('не найден')) {
+        const resp = res;
+        if (resp.message && !resp.message.includes('удалён')) {
           throw new Error(res.message);
         }
         const indexForRemove = this._userArticles.findIndex((el) => el._id === cardId);
@@ -76,7 +78,7 @@ export default class SavedArticle extends BaseComponent {
         this._removeFromDOM();
         this._putArticlesToStorage();
       })
-      .catch((err) => alert(err))
+      .catch((err) => alert(`${serverErrors.DEFAULT} Текст ошибки: ${err}`))
       .finally(() => profileTitle.render());
   }
 

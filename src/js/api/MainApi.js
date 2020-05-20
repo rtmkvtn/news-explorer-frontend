@@ -12,18 +12,7 @@ export default class MainAPI {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ name, email, password }),
-    })
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-        return res.json().then((err) => err);
-      })
-      .catch((err) => {
-        const resErr = err;
-        resErr.message = 'Произошла ощибка на сервере, попробуйте снова позже';
-        return err;
-      });
+    }).then((res) => res.json());
   }
 
   signin(email, password) {
@@ -34,55 +23,26 @@ export default class MainAPI {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ email, password }),
-    })
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-        return res.json().then((err) => err);
-      })
-      .catch((err) => {
-        const resErr = err;
-        resErr.message = 'Произошла ощибка на сервере, попробуйте снова позже';
-        return err;
-      });
+    }).then((res) => res.json());
   }
 
   getUserData() {
     return fetch(`${this._baseURL}users/me`, {
       method: 'GET',
       credentials: 'include',
-    })
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-        return res.json().then((err) => err);
-      })
-      .catch((err) => {
-        const resErr = err;
-        resErr.message = 'Произошла ощибка на сервере, попробуйте снова позже';
-        return err;
-      });
+    }).then((res) => res.json());
   }
 
   getArticles() {
     return fetch(`${this._baseURL}articles`, {
       method: 'GET',
       credentials: 'include',
-    })
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-        return res.json().then((err) => err);
-      })
-      .then((json) => json)
-      .catch((err) => {
-        const resErr = err;
-        resErr.message = 'Произошла ощибка на сервере, попробуйте снова позже';
-        return err;
-      });
+    }).then((res) => {
+      if (res.ok || res.status === 404) {
+        return res.json();
+      }
+      throw new Error(`${res.status}: ${res.message}`);
+    });
   }
 
   createArticle(keyword, title, text, date, source, link, image) {
@@ -101,18 +61,7 @@ export default class MainAPI {
         link,
         image,
       }),
-    })
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-        return res.json().then((err) => err);
-      })
-      .catch((err) => {
-        const resErr = err;
-        resErr.message = 'Произошла ощибка на сервере, попробуйте снова позже';
-        return err;
-      });
+    }).then((res) => res.json());
   }
 
   removeArticle(id) {
@@ -122,17 +71,17 @@ export default class MainAPI {
       headers: {
         'Content-Type': 'application/json',
       },
-    })
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-        return res.json().then((err) => err);
-      })
-      .catch((err) => {
-        const resErr = err;
-        resErr.message = 'Произошла ощибка на сервере, попробуйте снова позже';
-        return err;
-      });
+    }).then((res) => res.json());
+    // {
+    //   if (res.ok) {
+    //     return res.json();
+    //   }
+    //   return res.json().then((err) => err);
+    // })
+    // .catch((err) => {
+    //   const resErr = err;
+    //   resErr.message = 'Произошла ощибка на сервере, попробуйте снова позже';
+    //   return err;
+    // });
   }
 }

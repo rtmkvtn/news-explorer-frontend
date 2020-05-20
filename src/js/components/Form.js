@@ -41,18 +41,29 @@ export default class Form extends BaseComponent {
     this._mainApi()
       .getArticles()
       .then((data) => {
-        const articles = data;
-        this._addDataToUserArticles(articles);
-        this._putArticlesToStorage();
-      });
-    this._mainApi()
-      .getUserData()
-      .then((usr) => {
-        const user = usr;
-        const userName = user.name.substring(0, 1).toUpperCase() + user.name.substring(1);
-        localStorage.setItem('userName', userName);
-        window.location.href = './index.html';
-      });
+        console.log(data);
+        // в api кидается ошибка на все ответы с ошибкой, кроме 404, т.к. 404 означает,
+        // что у пользователя пока что нет статей. 404 пропускаем
+        if (!data.message) {
+          const articles = data;
+          this._addDataToUserArticles(articles);
+          this._putArticlesToStorage();
+        }
+        this._mainApi()
+          .getUserData()
+          .then((usr) => {
+            if (usr.message) {
+              return Promise.reject(usr.message);
+            }
+            const userName = usr.name.substring(0, 1).toUpperCase() + usr.name.substring(1);
+            localStorage.setItem('userName', userName);
+            return (window.location.href = './index.html');
+          })
+          .catch((err) => {
+            throw new Error(err);
+          });
+      })
+      .catch((err) => alert(`Произошла ошибка на сервере: ${err}`));
   }
 
   _inputValidation(input) {
@@ -129,17 +140,15 @@ export default class Form extends BaseComponent {
     this._mainApi()
       .signup(this._form.email.value, this._form.password.value, this._form.name.value)
       .then((res) => {
-        const resp = res;
-        if (resp.message) {
-          this.setServerError(resp.message);
-          this._clear();
-        } else {
-          this._popupContext.close();
-          this._successSignupPopup(popupContent.successRegister).open();
+        if (res.message) {
+          return Promise.reject(res.message);
         }
+        this._popupContext.close();
+        return this._successSignupPopup(popupContent.successRegister).open();
       })
-      .catch((err) => console.log(err))
+      .catch((err) => this.setServerError(err))
       .finally(() => {
+        this._clear();
         this._enableForm();
         this._buttonNormal();
       });
@@ -152,19 +161,17 @@ export default class Form extends BaseComponent {
     this._mainApi()
       .signin(this._form.email.value, this._form.password.value)
       .then((res) => {
-        const resp = res;
-        if (resp.message) {
-          this.setServerError(resp.message);
-          this._clear();
-        } else {
-          localStorage.setItem('jwt', resp.token);
-          localStorage.setItem('tokenGoneAt', Date.now() + 7 * 24 * 60 * 60000);
-          this._getInfo();
-          this._popupContext.close();
+        if (res.message) {
+          return Promise.reject(res.message);
         }
+        localStorage.setItem('jwt', res.token);
+        localStorage.setItem('tokenGoneAt', Date.now() + 7 * 24 * 60 * 60000);
+        this._getInfo();
+        return this._popupContext.close();
       })
-      .catch((err) => console.log(err))
+      .catch((err) => this.setServerError(err))
       .finally(() => {
+        this._clear();
         this._enableForm();
         this._buttonNormal();
       });
