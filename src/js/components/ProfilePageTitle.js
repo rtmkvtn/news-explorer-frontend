@@ -1,4 +1,5 @@
 import BaseComponent from './BaseComponent';
+import sanitizeHTML from '../utils/sanitizer';
 
 // очень хардкодно вышел класс. То ли русский язык такой удобный, то ли я глупый.
 // Нужно пересмотреть потом
@@ -50,31 +51,31 @@ export default class ProfilePageTitle extends BaseComponent {
       this._words.textContent = '';
       this._wordsTempl = '';
     } else if (this._keywords.length === 1) {
-      const wordOne = this._makeContentForDOM(`<span>${this._keywords[0]}.</span>`);
+      const wordOne = this._makeContentForDOM(`<span>${sanitizeHTML(this._keywords[0])}.</span>`);
       this._words.appendChild(wordOne);
     } else if (this._keywords.length === 2) {
-      const wordOne = this._makeContentForDOM(`<span>${this._keywords[0]}, </span>`);
-      const wordTwo = this._makeContentForDOM(`<span>${this._keywords[1]}.</span>`);
+      const wordOne = this._makeContentForDOM(`<span>${sanitizeHTML(this._keywords[0])}, </span>`);
+      const wordTwo = this._makeContentForDOM(`<span>${sanitizeHTML(this._keywords[1])}.</span>`);
       this._words.appendChild(wordOne);
       this._words.appendChild(wordTwo);
     } else if (this._keywords.length === 3) {
-      const wordOne = this._makeContentForDOM(`<span>${this._keywords[0]}, </span>`);
-      const wordTwo = this._makeContentForDOM(`<span>${this._keywords[1]}, </span>`);
-      const wordThree = this._makeContentForDOM(`<span>${this._keywords[2]}.</span>`);
+      const wordOne = this._makeContentForDOM(`<span>${sanitizeHTML(this._keywords[0])}, </span>`);
+      const wordTwo = this._makeContentForDOM(`<span>${sanitizeHTML(this._keywords[1])}, </span>`);
+      const wordThree = this._makeContentForDOM(`<span>${sanitizeHTML(this._keywords[2])}.</span>`);
       this._words.appendChild(wordOne);
       this._words.appendChild(wordTwo);
       this._words.appendChild(wordThree);
     } else if (this._keywords.length === 4) {
-      const wordOne = this._makeContentForDOM(`<span>${this._keywords[0]}, </span>`);
-      const wordTwo = this._makeContentForDOM(`<span>${this._keywords[1]}, </span>`);
+      const wordOne = this._makeContentForDOM(`<span>${sanitizeHTML(this._keywords[0])}, </span>`);
+      const wordTwo = this._makeContentForDOM(`<span>${sanitizeHTML(this._keywords[1])}, </span>`);
       const wordsOthers = this._makeContentForDOM('<span>и 1 другому.</span>');
       this._words.appendChild(wordOne);
       this._words.appendChild(wordTwo);
       this._words.appendChild(wordsOthers);
     } else {
-      const wordOne = this._makeContentForDOM(`<span>${this._keywords[0]}, </span>`);
-      const wordTwo = this._makeContentForDOM(`<span>${this._keywords[1]}, </span>`);
-      const wordsOthers = this._makeContentForDOM(`<span>и ${this._keywords.length - 2} другим.</span>`);
+      const wordOne = this._makeContentForDOM(`<span>${sanitizeHTML(this._keywords[0])}, </span>`);
+      const wordTwo = this._makeContentForDOM(`<span>${sanitizeHTML(this._keywords[1])}, </span>`);
+      const wordsOthers = this._makeContentForDOM(`<span>и ${sanitizeHTML(this._keywords.length - 2)} другим.</span>`);
       this._words.appendChild(wordOne);
       this._words.appendChild(wordTwo);
       this._words.appendChild(wordsOthers);
@@ -84,21 +85,21 @@ export default class ProfilePageTitle extends BaseComponent {
   // рендерит блок с количеством статей, в зависимости от их количества
   _renderTitle() {
     if (this._numOfArticles === 0) {
-      this._titleTempl = `${localStorage.userName}, у вас пока нет сохраненных статей.`;
+      this._titleTempl = `${sanitizeHTML(localStorage.userName)}, у вас пока нет сохраненных статей.`;
     } else if (
       this._numOfArticles.toString()[this._numOfArticles.toString().length - 1] === '1' &&
       this._numOfArticles.toString()[this._numOfArticles.toString().length - 2] !== '1'
     ) {
-      this._titleTempl = `${localStorage.userName}, у вас ${this._numOfArticles} сохраненная статья.`;
+      this._titleTempl = `${sanitizeHTML(localStorage.userName)}, у вас ${this._numOfArticles} сохраненная статья.`;
     } else if (
       (this._numOfArticles.toString()[this._numOfArticles.toString().length - 1] === '2' ||
         this._numOfArticles.toString()[this._numOfArticles.toString().length - 1] === '3' ||
         this._numOfArticles.toString()[this._numOfArticles.toString().length - 1] === '4') &&
       this._numOfArticles.toString()[this._numOfArticles.toString().length - 2] !== '1'
     ) {
-      this._titleTempl = `${localStorage.userName}, у вас ${this._numOfArticles} сохраненных статьи.`;
+      this._titleTempl = `${sanitizeHTML(localStorage.userName)}, у вас ${this._numOfArticles} сохраненных статьи.`;
     } else {
-      this._titleTempl = `${localStorage.userName}, у вас ${this._numOfArticles} сохраненных статей.`;
+      this._titleTempl = `${sanitizeHTML(localStorage.userName)}, у вас ${this._numOfArticles} сохраненных статей.`;
     }
     this._title.textContent = this._titleTempl;
   }
