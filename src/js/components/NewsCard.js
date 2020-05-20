@@ -1,14 +1,9 @@
 /* eslint-disable indent */
 import BaseComponent from './BaseComponent';
-import dateFormatOptions from '../utils/dateFormatOptions';
 import defaultPics from '../utils/defaultPics';
 import MainAPI from '../api/MainApi';
 import cardsTemplates from '../utils/cardsTemplates';
 import serverErrors from '../constants/serverErrors';
-
-const dateFormat = require('dateformat');
-
-dateFormat.i18n = dateFormatOptions;
 
 const mainApi = () => new MainAPI();
 
@@ -27,7 +22,7 @@ export default class NewsCard extends BaseComponent {
     // далее в карточке будет альтернативный бэкграунд, в любом случае
     this._image = cardObj.article.urlToImage ? cardObj.article.urlToImage : 'http://no-image.com/pic.jpg';
     this._dateForApi = cardObj.article.publishedAt;
-    this._date = dateFormat(cardObj.article.publishedAt, 'dd mmmm, yyyy');
+    this._date = new Date(Date.parse(cardObj.article.publishedAt));
 
     this._template = null;
   }
@@ -36,7 +31,7 @@ export default class NewsCard extends BaseComponent {
     this._template = cardsTemplates.cardFromNewsApi(
       this._image,
       defaultPics[Math.floor(Math.random() * defaultPics.length)],
-      this._date,
+      this._date.toLocaleString('ru', { day: 'numeric', month: 'long', year: 'numeric' }),
       this._title,
       this._description,
       this._url,

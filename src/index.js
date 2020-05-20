@@ -11,6 +11,9 @@ if (!localStorage.jwt) {
   localStorage.setItem('userArticles', '[]');
 }
 
+const date = new Date(Date.now());
+console.log(date.toLocaleString('ru', { day: 'numeric', month: 'long', year: 'numeric' }));
+
 const SearchResSection = document.querySelector('.results');
 const searchForm = new MainForm(
   new NewsApi(),
