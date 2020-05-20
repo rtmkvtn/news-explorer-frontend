@@ -17,8 +17,8 @@ export default class Header extends BaseComponent {
     };
   }
 
-  openPopup() {
-    this._popup.open();
+  openPopup(state) {
+    this._popup.open(state);
   }
 
   // Меняет состояние isLoggedIn, запускает рендер

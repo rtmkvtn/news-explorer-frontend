@@ -12,6 +12,14 @@ export default class PopupLogin extends Popup {
     };
   }
 
+  open(state) {
+    if (state) {
+      this.state.signin = state;
+    }
+    this.setContent();
+    this._popup.classList.add('popup_is-opened');
+  }
+
   _chooseTempl() {
     if (!this._state.signin) {
       this._templ = popupContent.register;
