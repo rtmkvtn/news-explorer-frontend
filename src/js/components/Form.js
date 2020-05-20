@@ -5,16 +5,12 @@ import popupContent from '../utils/popupContent';
 import MainAPI from '../api/MainApi';
 
 const customValidator = (input, error) => new CustomValidator(input, error);
-const mainApi = () => new MainAPI();
 
 export default class Form extends BaseComponent {
   constructor() {
     super();
     this._customValidator = customValidator;
     this._mainApi = null;
-    console.log(this);
-
-    this._mainApi = mainApi;
   }
 
   addValidation(popupContext) {

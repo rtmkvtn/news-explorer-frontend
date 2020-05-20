@@ -77,7 +77,7 @@ export default class Header extends BaseComponent {
   _buildNotLoggedInNav() {
     this.button = this._makeContentForDOM(headerButtons.notLogged);
     this._nav.appendChild(this.button);
-    this._addListener(this.button, 'click', (evt) => this._popup.open(evt));
+    this._addListener(this.button, 'click', (evt) => this._popup.open(false, evt));
   }
 
   _buildNav() {

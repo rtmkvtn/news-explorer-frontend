@@ -36,7 +36,6 @@ export default class FormSignin extends Form {
     this._mainApi
       .getArticles()
       .then((data) => {
-        console.log(data);
         // в api кидается ошибка на все ответы с ошибкой, кроме 404, т.к. 404 означает,
         // что у пользователя пока что нет статей. 404 пропускаем
         if (!data.message) {

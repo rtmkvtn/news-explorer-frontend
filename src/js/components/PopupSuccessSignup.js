@@ -10,7 +10,6 @@ export default class PopupSuccessSignup extends Popup {
   }
 
   switch() {
-    console.log(this);
     this.close();
     header.openPopup(true);
   }

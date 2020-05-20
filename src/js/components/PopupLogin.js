@@ -13,8 +13,8 @@ export default class PopupLogin extends Popup {
   }
 
   open(state) {
-    if (state) {
-      this.state.signin = state;
+    if (state === true) {
+      this._state.signin = state;
     }
     this.setContent();
     this._popup.classList.add('popup_is-opened');
