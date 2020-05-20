@@ -3,8 +3,8 @@ import sanitizeHTML from './sanitizer';
 const cardsTemplates = {
   cardFromNewsApi: (image, altImage, date, title, text, url, source) => `
     <article class="cards-container__card card">
-      <div class="card__image" style="background-image: url(${sanitizeHTML(image)}, 
-        url(${sanitizeHTML(altImage)}">
+      <div class="card__image" style="background-image: url(${sanitizeHTML(image)}), 
+        url(${sanitizeHTML(altImage)})">
         <button class="card__button-templ button_small-square"></button>
         <div class="card__button-hover-banner button-hover-banner">
          <p class="button-hover-banner__text">Войдите, чтобы сохранять статьи</p>
@@ -18,8 +18,8 @@ const cardsTemplates = {
   `,
   cardSaved: (image, altImage, keyWord, date, title, text, url, source) => `
     <article class="cards-container__card card">
-      <div class="card__image" style="background-image: url(${sanitizeHTML(image)}, 
-        url(.${sanitizeHTML(altImage)}">
+      <div class="card__image" style="background-image: url(${sanitizeHTML(image)}), 
+        url(.${sanitizeHTML(altImage)})">
         <button class="card__button-delete button_small-square" title="Remove article"></button>
         <div class="card__key-word key-word">
           <p class="key-word__text">${sanitizeHTML(keyWord)}</p>

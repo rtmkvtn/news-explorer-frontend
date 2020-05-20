@@ -25,7 +25,6 @@ export default class NewsCard extends BaseComponent {
   }
 
   render() {
-    console.log(this);
     this._template = cardsTemplates.cardFromNewsApi(
       this._image,
       defaultPics[Math.floor(Math.random() * defaultPics.length)],

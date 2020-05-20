@@ -52,9 +52,9 @@ export default class MainForm extends BaseComponent {
         } else {
           throw new Error(res.message);
         }
-        this._clear();
       })
-      .catch((err) => this._setServerError(err));
+      .catch((err) => this._setServerError(err))
+      .finally(() => this._enableForm());
   }
 
   _setServerError(err) {

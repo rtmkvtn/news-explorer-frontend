@@ -1,15 +1,12 @@
 import Popup from './Popup';
 import popupContent from '../utils/popupContent';
-import Form from './Form';
-import PopupSuccessSignup from './PopupSuccessSignup';
-
-const form = (type, mainApi, popupContext) => new Form(type, mainApi, popupContext);
 
 export default class PopupLogin extends Popup {
-  constructor(state) {
+  constructor(state, signupFormClass, signinFormClass) {
     super();
-    this._form = form;
     this._switch = this.switch.bind(this);
+    this._signupForm = signupFormClass;
+    this._signinForm = signinFormClass;
     this._state = {
       signin: state,
     };
@@ -49,7 +46,11 @@ export default class PopupLogin extends Popup {
         callback: this._switch,
       },
     ]);
-    this._form(this._state.signin, this, new PopupSuccessSignup(new PopupLogin(true))).addValidation();
+    if (!this._state.signin) {
+      this._signupForm.addValidation(this);
+    } else {
+      this._signinForm.addValidation(this);
+    }
   }
 
   switch() {

@@ -1,17 +1,17 @@
 import Popup from './Popup';
 import popupContent from '../utils/popupContent';
+import header from '../../index';
 
 export default class PopupSuccessSignup extends Popup {
-  constructor(popupLoginClass) {
+  constructor() {
     super();
     this._switch = this.switch.bind(this);
     this._templ = popupContent.successRegister;
-    this._popupLogin = popupLoginClass;
   }
 
   switch() {
     console.log(this);
     this.close();
-    this._popupLogin.open();
+    header.openPopup(true);
   }
 }

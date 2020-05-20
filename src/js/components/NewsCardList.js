@@ -13,6 +13,7 @@ export default class NewsCardList extends BaseComponent {
     this._cardList = [];
     this._section = section;
     this._resultsTemplates = searchResults;
+    this._articlesByLine = 3;
 
     this._card = card;
     this._mainApi = api;
@@ -36,7 +37,7 @@ export default class NewsCardList extends BaseComponent {
       this._renderOneCard(this._keyWord);
     } else {
       newsList.forEach((el) => this._cardList.push(el));
-      while (this._container.childNodes.length !== 3) {
+      while (this._container.childNodes.length !== this._articlesByLine) {
         if (this._cardList.length === 0) {
           return;
         }
@@ -61,7 +62,7 @@ export default class NewsCardList extends BaseComponent {
 
   // Рендерит еще три карточки к результатам при нажатии на кнопку
   _moreResults() {
-    const stop = this._container.childNodes.length + 3;
+    const stop = this._container.childNodes.length + this._articlesByLine;
     while (this._container.childNodes.length !== stop) {
       if (this._cardList.length === 0) {
         this._buttonMore.remove();

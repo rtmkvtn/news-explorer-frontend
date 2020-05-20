@@ -5,6 +5,8 @@ import NewsApi from './js/api/NewsApi';
 import MainForm from './js/components/MainForm';
 import NewsCardList from './js/components/NewsCardList';
 import MainAPI from './js/api/MainApi';
+import FormSignup from './js/components/FormSignup';
+import FormSignin from './js/components/FormSignin';
 
 // Если авторизации нет, либо истекла, создаем пустой массив с данными сохраненных статей,
 // чтобы проверять статьи из NewsApi на наличие их у пользователя без запросов на MainApi.
@@ -20,7 +22,7 @@ const searchForm = new MainForm(
 );
 searchForm.setFormListeners();
 
-const popup = new PopupLogin();
+const popup = new PopupLogin(false, new FormSignup(), new FormSignin());
 const header = new Header(popup);
 
 header.onLoadRender();

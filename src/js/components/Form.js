@@ -1,80 +1,34 @@
 /* eslint-disable no-param-reassign */
 import BaseComponent from './BaseComponent';
-import popupContent from '../utils/popupContent';
 import CustomValidator from '../utils/customValidator';
+import popupContent from '../utils/popupContent';
 import MainAPI from '../api/MainApi';
 
-// Нужно передавать попап, который появится после успешной регистрации и валидатор для формы,
-// устанавливающий кастомные ошибки валидации
 const customValidator = (input, error) => new CustomValidator(input, error);
 const mainApi = () => new MainAPI();
 
 export default class Form extends BaseComponent {
-  constructor(state, popupContext, popupSuccess) {
+  constructor() {
     super();
     this._customValidator = customValidator;
-    this._popupSuccess = popupSuccess;
+    this._mainApi = null;
+    console.log(this);
 
+    this._mainApi = mainApi;
+  }
+
+  addValidation(popupContext) {
+    // Все дочерние классы юзают MainAPI
+    // Здесь, полагаю, не страшно вызывать конструктор класса MainAPI, т.к. при изменении одного из дочерних классов,
+    // ничего не произойдет с ним, путаницы не должно быть.
+    this._mainApi = new MainAPI();
     this._form = document.forms.form;
     this._button = document.querySelector('.popup__button');
     this._inputs = this._form.querySelectorAll('.popup__input');
     this._errors = document.querySelectorAll('.popup__error');
     this._serverErrorElement = this._form.querySelector('.submit__error');
-    this._mainApi = mainApi;
     this._popupContext = popupContext;
 
-    this._state = {
-      signin: state,
-    };
-  }
-
-  _clear() {
-    this._inputs.forEach((input) => (input.value = ''));
-  }
-
-  // Берет массив статей пользователя с сервера.
-  // Записывает его в localStorage, так же записывает userName туда же
-  _getInfo() {
-    this._getArticlesFromStorage();
-    this._mainApi()
-      .getArticles()
-      .then((data) => {
-        console.log(data);
-        // в api кидается ошибка на все ответы с ошибкой, кроме 404, т.к. 404 означает,
-        // что у пользователя пока что нет статей. 404 пропускаем
-        if (!data.message) {
-          const articles = data;
-          this._addDataToUserArticles(articles);
-          this._putArticlesToStorage();
-        }
-        this._mainApi()
-          .getUserData()
-          .then((usr) => {
-            if (usr.message) {
-              return Promise.reject(usr.message);
-            }
-            const userName = usr.name.substring(0, 1).toUpperCase() + usr.name.substring(1);
-            localStorage.setItem('userName', userName);
-            return (window.location.href = './index.html');
-          })
-          .catch((err) => {
-            throw new Error(err);
-          });
-      })
-      .catch((err) => alert(`Произошла ошибка на сервере: ${err}`));
-  }
-
-  _inputValidation(input) {
-    if (input.type === 'email') {
-      this._customValidator(input, input.nextElementSibling).emailValidation();
-    } else if (input.type === 'text') {
-      this._customValidator(input, input.nextElementSibling).textValidation();
-    } else if (input.type === 'password') {
-      this._customValidator(input, input.nextElementSibling).passwordValidation();
-    }
-  }
-
-  addValidation() {
     this._inputs.forEach((input) => input.addEventListener('input', (evt) => this._inputValidation(input, evt)));
     this._setListeners([
       {
@@ -88,6 +42,24 @@ export default class Form extends BaseComponent {
         callback: (evt) => this.submit(evt),
       },
     ]);
+  }
+
+  setServerError(text) {
+    this._serverErrorElement.textContent = text;
+  }
+
+  _clear() {
+    this._inputs.forEach((input) => (input.value = ''));
+  }
+
+  _inputValidation(input) {
+    if (input.type === 'email') {
+      this._customValidator(input, input.nextElementSibling).emailValidation();
+    } else if (input.type === 'text') {
+      this._customValidator(input, input.nextElementSibling).textValidation();
+    } else if (input.type === 'password') {
+      this._customValidator(input, input.nextElementSibling).passwordValidation();
+    }
   }
 
   _formValidation() {
@@ -116,62 +88,5 @@ export default class Form extends BaseComponent {
 
   _buttonNormal() {
     this._button.textContent = this._buttonText;
-  }
-
-  submit(event) {
-    event.preventDefault();
-    if (this._state.signin) {
-      this.submitSignin();
-    } else {
-      this.submitSignup();
-    }
-  }
-
-  setServerError(text) {
-    this._serverErrorElement.textContent = text;
-  }
-
-  submitSignup() {
-    this._disableForm();
-    this._buttonLoading();
-    this.setServerError('');
-    this._mainApi()
-      .signup(this._form.email.value, this._form.password.value, this._form.name.value)
-      .then((res) => {
-        if (res.message) {
-          return Promise.reject(res.message);
-        }
-        this._popupContext.close();
-        return this._popupSuccess.open();
-      })
-      .catch((err) => this.setServerError(err))
-      .finally(() => {
-        this._clear();
-        this._enableForm();
-        this._buttonNormal();
-      });
-  }
-
-  submitSignin() {
-    this._disableForm();
-    this._buttonLoading();
-    this.setServerError('');
-    this._mainApi()
-      .signin(this._form.email.value, this._form.password.value)
-      .then((res) => {
-        if (res.message) {
-          return Promise.reject(res.message);
-        }
-        localStorage.setItem('jwt', res.token);
-        localStorage.setItem('tokenGoneAt', Date.now() + 7 * 24 * 60 * 60000);
-        this._getInfo();
-        return this._popupContext.close();
-      })
-      .catch((err) => this.setServerError(err))
-      .finally(() => {
-        this._clear();
-        this._enableForm();
-        this._buttonNormal();
-      });
   }
 }
