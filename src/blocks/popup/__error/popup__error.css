@@ -8,8 +8,9 @@
     line-height: 15px;
     color: red;
 
+    position: fixed;
     margin-top: -28px;
     margin-bottom: 13px;
 
-    display: none;
+    /* display: none; */
 }

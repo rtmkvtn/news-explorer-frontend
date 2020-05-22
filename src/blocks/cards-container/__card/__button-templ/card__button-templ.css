@@ -1,35 +1,35 @@
 @import url(../../../button/button_small-square.css);
 
 .card__button-templ {
-    background: url(../../../../images/tempImg.svg) center no-repeat;
-    background-color: #fff;
+  background: url(../../../../images/tempImg.svg) center no-repeat;
+  background-color: #fff;
 
-    position: absolute;
-    top: 24px;
-    right: 24px;
-    cursor: pointer;
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  cursor: pointer;
 }
 
 .card__button-templ:hover {
-    background: url(../../../../images/templIconHover.svg) center no-repeat;
-    background-color: #fff;
+  background: url(../../../../images/templIconHover.svg) center no-repeat;
+  background-color: #fff;
 }
 
-.card__button-templ_clicked {
-    background: url(../../../../images/templIconClicked.svg) center no-repeat;
-    background-color: #fff;
+.card__button-templ._clicked {
+  background: url(../../../../images/templIconClicked.svg) center no-repeat;
+  background-color: #fff;
 }
 
 @media (max-width: 1024px) {
-    .card__button-templ {
-        top: 16px;
-        right: 16px;
-    }
+  .card__button-templ {
+    top: 16px;
+    right: 16px;
+  }
 }
 
 @media (max-width: 768px) {
-    .card__button-templ {
-        top: 8px;
-        right: 8px;
-    }   
+  .card__button-templ {
+    top: 8px;
+    right: 8px;
+  }
 }

@@ -1,9 +1,18 @@
 @import url(./_black/menu-button__icon_black.css);
 
 .menu-button__icon {
-    background: url(../../../../images/menu.svg) center no-repeat;
-    width: 24px;
-    height: 24px;
-    position: relative;
-    z-index: 2;
+  background: url(../../../../images/menu.svg) center no-repeat;
+  width: 24px;
+  height: 24px;
+  position: relative;
+}
+
+.menu-button__icon._black {
+  background: url(../../../../images/menuBlack.svg) !important;
+}
+
+.menu-button__icon_close {
+  background: url(../../../../images/close.svg) center no-repeat;
+  width: 20px;
+  height: 20px;
 }

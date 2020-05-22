@@ -1,19 +1,23 @@
 .header__link_active {
-    padding-bottom: 26px;
-    box-sizing: border-box;
-    border-bottom: 3px solid white;
-    opacity: 1 !important;
+  padding-bottom: 26px;
+  box-sizing: border-box;
+  border-bottom: 3px solid white;
+  opacity: 1 !important;
+}
+
+.header__link_active._black {
+  border-bottom: 3px solid #1a1b22 !important;
 }
 
 @media (max-width: 768px) {
-    .header__link_active {
-        padding-bottom: 20px;
-    }   
+  .header__link_active {
+    padding-bottom: 20px;
+  }
 }
 
 @media (max-width: 640px) {
-    .header__link_active {
-        padding-bottom: 0;
-        border-bottom: none;
-    }   
+  .header__link_active {
+    padding-bottom: 0;
+    border-bottom: none;
+  }
 }
