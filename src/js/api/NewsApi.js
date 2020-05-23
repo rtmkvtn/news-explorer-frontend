@@ -22,7 +22,6 @@ export default class NewsApi {
       },
     })
       .then((res) => {
-        console.log(res);
         if (res.ok) {
           return res.json();
         }

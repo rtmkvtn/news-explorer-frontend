@@ -44,12 +44,15 @@ export default class Popup extends BaseComponent {
   open() {
     this.setContent();
     this._popup.classList.add('popup_is-opened');
+    document.querySelector('.root').classList.add('root_popup');
+    console.log(document.querySelector('.root'));
   }
 
   close() {
     this._clearListeners();
     this._content.remove();
     this._popup.classList.remove('popup_is-opened');
+    document.querySelector('.root').classList.remove('root_popup');
   }
 
   _keyhandler(event) {
