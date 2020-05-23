@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 const searchResults = {
   resultsTitle: `
-    <h2 class="results__title section__title">Результаты поиска</h2>
+    <h2 class="results__title section__title">Search results</h2>
   `,
   resultsContainer: `
     <div class="results__container cards-container"></div>
@@ -12,7 +12,7 @@ const searchResults = {
   loader: `
     <div class="root__section search-loading">
       <i class="circle-preloader"></i>
-      <h3 class="search-loading__title">Идет поиск новостей...</h3>
+      <h3 class="search-loading__title">Looking for the news...</h3>
     </div>
   `,
   nothisngFound: `
@@ -24,16 +24,17 @@ const searchResults = {
         <circle cx="55.5" cy="33.5" r="1.5" fill="#D1D2D6"/>
         <circle cx="30.5" cy="33.5" r="1.5" fill="#D1D2D6"/>
       </svg>
-      <h2 class="nothing-found__title">Ничего не найдено</h2>
-      <p class="nothing-found__text">К сожалению по вашему запросу ничего не найдено.</p>
+      <h2 class="nothing-found__title">No results</h2>
+      <p class="nothing-found__text">Sorry, nothing was found.</p>
     </div>
   `,
   showMoreButton: `
-    <button class="results__more-results-button button_big-oval" title="More results">Показать еще</button>
+    <button class="results__more-results-button button_big-oval" title="More results">More</button>
   `,
   serverError: `
   <div class="root__section nothing-found serverError">
-    <h2 class="nothing-found__title serverError__title">Произошла ошибка на сервере!</h2>
+    <h2 class="nothing-found__title serverError__title">An error has occurred!</h2>
+    <p class="nothing-found__text">Please, try again later.</p>
   </div>
   `,
 };

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -24,21 +24,21 @@
 
       <section class="root__section search">
         <div class="search__container">
-          <h1 class="search__title">Что в мире творится?</h1>
+          <h1 class="search__title">What's going on in the world?</h1>
           <p class="search__text">
-            Находите самые свежие статьи на любую тему и сохраняйте в своём личном кабинете.
+            Find the latest news about anything and store them into your personal profile page.
           </p>
           <form class="search__form form" name="search">
             <input
               type="text"
               name="keyWord"
-              placeholder="Введите тему новости"
+              placeholder="Input the keyword to search"
               class="form__input input"
               required
               minlength="2"
             />
             <button class="form__button button_big-oval" title="Search" disabled="true">
-              Искать
+              Search
             </button>
           </form>
         </div>
@@ -53,30 +53,33 @@
         <figure class="about-author__author author">
           <picture class="author__picture">
             <!-- Грузятся рандомные изображения. просто для понимания принципа использовал-->
-            <source
-              media="(max-width: 425px)"
-              srcset="<%= require('./images/author.jpg').default%>"
-            />
-            <source
-              media="(max-width: 1024px)"
-              srcset="<%= require('./images/author.jpg').default%>"
-            />
-            <img
-              src="<%= require('./images/author.jpg').default%>"
-              alt="Artem Kovtun"
-              class="author__picture"
-            />
+            <source media="(max-width: 425px)" srcset="<%= require('./images/author.jpg').default%>" />
+            <source media="(max-width: 1024px)" srcset="<%= require('./images/author.jpg').default%>" />
+            <img src="<%= require('./images/author.jpg').default%>" alt="Artem Kovtun" class="author__picture" />
           </picture>
           <figcaption class="author__caption caption">
-            <h3 class="caption__title">Об авторе</h3>
+            <h3 class="caption__title">About author</h3>
+            <p class="caption__text">Hello there!</p>
             <p class="caption__text">
-              Это блок с описанием автора проекта. Здесь следует указать, как вас зовут, чем вы
-              занимаетесь, какими технологиями разработки владеете.
+              I graduated Yandex.Praktikum's full-stack JavaScript web-developer courses.
             </p>
             <p class="caption__text">
-              Также можно рассказать о процессе обучения в Практикуме, чему вы тут научились, и чем
-              можете помочь потенциальным заказчикам.
+              I have strong understanding of native JavaScript, so, can easily adapt to any tasks that includes this
+              language.
             </p>
+            <p class="caption__text">
+              Also, I have experience of events organisation and I’m working as a teacher right now. So, my social
+              skills are alright. According to it, you may say, that I won’t have any problem joining your team. I’m
+              looking forward to challenging tasks and work.
+            </p>
+            <p class="caption__text">
+              You’re welcome to check my
+              <a href="https://yadi.sk/i/fzwc2tVvpgQGdg" target="_blank" class="caption__link">CV</a>
+              file or my
+              <a href="https://github.com/fckXYZ" target="_blank" class="caption__link">github.com</a>
+              repository.
+            </p>
+            <p class="caption__text">Thanks for your attention!</p>
           </figcaption>
         </figure>
       </section>
@@ -86,13 +89,13 @@
           <p class="footer__copyright">&copy; 2020 Supersite, Powered by News API</p>
           <div class="footer__links-container">
             <div class="footer__links">
-              <a href="./index.html" class="footer__link" title="Main page">Главная</a>
+              <a href="./index.html" class="footer__link" title="Main page">Main page</a>
               <a
                 href="https://praktikum.yandex.ru/profile/web-developer/"
                 target="_blank"
                 class="footer__link"
                 title="praktikum.yandex.ru"
-                >Яндекс.Практикум</a
+                >Yandex.Praktikum</a
               >
             </div>
             <div class="footer__links-icons">
@@ -102,13 +105,7 @@
                 class="footer__link"
                 title="Github.com"
               >
-                <svg
-                  width="22"
-                  height="21"
-                  viewBox="0 0 22 21"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
+                <svg width="22" height="21" viewBox="0 0 22 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path
                     fill-rule="evenodd"
                     clip-rule="evenodd"

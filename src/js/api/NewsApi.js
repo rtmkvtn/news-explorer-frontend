@@ -10,18 +10,19 @@ export default class NewsApi {
   }
 
   _reqUrlFormer(keyWord) {
-    this._reqUrl = `${this._baseUrl}?q=${keyWord}&from=${this._dateFrom}&language=ru&to=${this._dateTo}&pageSize=100`;
+    this._reqUrl = `${this._baseUrl}?q=${keyWord}&from=${this._dateFrom}&to=${this._dateTo}&pageSize=100`;
   }
 
   getNews(keyWord) {
     this._reqUrlFormer(keyWord);
 
-    return fetch(`${this._reqUrl}`, {
+    return fetch(`https://cors-anywhere.herokuapp.com/${this._reqUrl}`, {
       headers: {
         'X-Api-Key': this._apiKey,
       },
     })
       .then((res) => {
+        console.log(res);
         if (res.ok) {
           return res.json();
         }

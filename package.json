@@ -6,7 +6,7 @@
   "scripts": {
     "build": "rimraf dist && cross-env webpack --mode production",
     "dev": "webpack-dev-server --mode development --open --watch",
-    "deploy": "npm run build && gh-pages -d dist"
+    "deploy": "npm run build && scp -r ./dist/* fckxyz@84.201.167.164:/home/fckxyz/news-explorer-frontend"
   },
   "repository": {
     "type": "git",

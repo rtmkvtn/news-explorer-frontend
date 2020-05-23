@@ -1,18 +1,19 @@
 @import url('./__text/caption__text.css');
 @import url('./__title/caption__title.css');
+@import url(./__link/caption__link.css);
 
 .author__caption {
-    margin-left: 56px;
+  margin-left: 56px;
 }
 
 @media (max-width: 768px) {
-    .author__caption {
-        margin-left: 32px;
-    }   
+  .author__caption {
+    margin-left: 32px;
+  }
 }
 
 @media (max-width: 510px) {
-    .author__caption {
-        margin: 24px auto;
-    }
+  .author__caption {
+    margin: 24px auto;
+  }
 }
