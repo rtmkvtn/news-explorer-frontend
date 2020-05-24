@@ -11,9 +11,9 @@ export default class NewsCard extends BaseComponent {
 
     this._keyWord = keyWord;
     this._card = null;
-    this._source = cardObj.article.source.name ? cardObj.article.source.name : 'Источник не указан';
+    this._source = cardObj.article.source.name ? cardObj.article.source.name : 'No source';
     this._title = cardObj.article.title;
-    this._description = cardObj.article.description ? cardObj.article.description : 'Нет текста';
+    this._description = cardObj.article.description ? cardObj.article.description : 'No content';
     this._url = cardObj.article.url;
     // Если картинки нет, ставится битая ссылка, чтобы api не ругался на ввод без ссылки
     // далее в карточке будет альтернативный бэкграунд, в любом случае
@@ -28,7 +28,7 @@ export default class NewsCard extends BaseComponent {
     this._template = cardsTemplates.cardFromNewsApi(
       this._image,
       defaultPics[Math.floor(Math.random() * defaultPics.length)],
-      this._date.toLocaleString('ru', { day: 'numeric', month: 'long', year: 'numeric' }),
+      this._date.toLocaleString('en', { day: 'numeric', month: 'long', year: 'numeric' }),
       this._title,
       this._description,
       this._url,
@@ -79,7 +79,7 @@ export default class NewsCard extends BaseComponent {
       })
       .catch((err) => {
         this._icon.classList.remove('_clicked');
-        alert(`${serverErrors.DEFAULT} Текст ошибки: ${err}`);
+        alert(`${serverErrors.DEFAULT_ENG} Текст ошибки: ${err}`);
       });
   }
 
@@ -101,7 +101,7 @@ export default class NewsCard extends BaseComponent {
         this._icon.classList.add('_clicked');
         this._putNewCardToStorage(res);
       })
-      .catch((err) => alert(`${serverErrors.DEFAULT} Текст ошибки: ${err}`));
+      .catch((err) => alert(`${serverErrors.DEFAULT_ENG} Текст ошибки: ${err}`));
   }
 
   _putNewCardToStorage(card) {

@@ -7,7 +7,7 @@ const cardsTemplates = {
         url(${sanitizeHTML(altImage)})">
         <button class="card__button-templ button_small-square"></button>
         <div class="card__button-hover-banner button-hover-banner">
-         <p class="button-hover-banner__text">Войдите, чтобы сохранять статьи</p>
+         <p class="button-hover-banner__text">Please signin to save articles</p>
         </div>
       </div>
       <p class="card__date">${sanitizeHTML(date)}</p>
@@ -25,7 +25,7 @@ const cardsTemplates = {
           <p class="key-word__text">${sanitizeHTML(keyWord)}</p>
         </div>
       <div class="card__button-hover-banner button-hover-banner">
-      <p class="button-hover-banner__text">Удалить из сохранённых</p>
+      <p class="button-hover-banner__text">Remove from saved articles</p>
       </div>
       </div>
       <p class="card__date">${sanitizeHTML(date)}</p>

@@ -2,37 +2,37 @@
 @import url('./__caption/author__caption.css');
 
 .about-author__author {
-    margin: 80px auto;
-    display: flex;
-    width: calc(100% - 208px);
-    max-width: 1232px;
+  margin: 80px auto;
+  display: flex;
+  width: calc(100% - 208px);
+  max-width: 1232px;
 }
 
 @media (max-width: 1024px) {
-    .about-author__author {
-        margin: 64px auto;
-        width: calc(100% - 128px);
-    }
+  .about-author__author {
+    margin: 64px auto;
+    width: calc(100% - 128px);
+  }
 }
 
 @media (max-width: 768px) {
-    .about-author__author {
-        margin: 40px auto 61px;
-        width: calc(100% - 80px);
-    }
+  .about-author__author {
+    margin: 40px auto 61px;
+    width: calc(100% - 80px);
+  }
 }
 
 @media (max-width: 640px) {
-    .about-author__author {
-        margin: 32px auto 80px;
-        width: calc(100% - 32px);
-    }
+  .about-author__author {
+    margin: 32px auto 80px;
+    width: calc(100% - 32px);
+  }
 }
 
 @media (max-width: 510px) {
-    .about-author__author {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-    }
+  .about-author__author {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
 }

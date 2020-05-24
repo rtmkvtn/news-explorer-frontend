@@ -1,13 +1,8 @@
 import BaseComponent from './BaseComponent';
-import dateFormatOptions from '../utils/dateFormatOptions';
 import defaultPics from '../utils/defaultPics';
 import profileTitle from '../../secondary/index';
 import cardsTemplates from '../utils/cardsTemplates';
 import serverErrors from '../constants/serverErrors';
-
-const dateFormat = require('dateformat');
-
-dateFormat.i18n = dateFormatOptions;
 
 export default class SavedArticle extends BaseComponent {
   constructor(article, mainApi) {
@@ -75,7 +70,7 @@ export default class SavedArticle extends BaseComponent {
         this._removeFromDOM();
         this._putArticlesToStorage();
       })
-      .catch((err) => alert(`${serverErrors.DEFAULT} Текст ошибки: ${err}`))
+      .catch((err) => alert(`${serverErrors.DEFAULT_ENG} Текст ошибки: ${err}`))
       .finally(() => profileTitle.render());
   }
 

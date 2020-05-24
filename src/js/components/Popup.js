@@ -33,6 +33,11 @@ export default class Popup extends BaseComponent {
         event: 'click',
         callback: this._switch,
       },
+      {
+        element: window,
+        event: 'scroll',
+        callback: (evt) => this.noScroll(evt),
+      },
     ]);
   }
 
@@ -56,5 +61,10 @@ export default class Popup extends BaseComponent {
     if ((event.target === this._popup && event.target !== this._content) || event.keyCode === 27) {
       this.close();
     }
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  noScroll() {
+    window.scrollTo(0, 0);
   }
 }

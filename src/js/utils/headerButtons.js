@@ -18,7 +18,7 @@ const headerButtons = {
     </button>
   `,
   notLogged: `
-  <button class="header__button button_big-oval" title="Authorization">Авторизоваться</button>
+  <button class="header__button button_big-oval" title="Authorization">Authorization</button>
   `,
 };
 

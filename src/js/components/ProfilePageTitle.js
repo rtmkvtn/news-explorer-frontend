@@ -17,8 +17,8 @@ export default class ProfilePageTitle extends BaseComponent {
 
   render() {
     this._getKeywordsArr();
-    this._renderTitle();
-    this._renderWords();
+    this._renderTitleEng();
+    this._renderWordsEng();
   }
 
   // Сортирует ключевые слова по популярности
@@ -102,5 +102,46 @@ export default class ProfilePageTitle extends BaseComponent {
       this._titleTempl = `${sanitizeHTML(localStorage.userName)}, у вас ${this._numOfArticles} сохраненных статей.`;
     }
     this._title.textContent = this._titleTempl;
+  }
+
+  _renderTitleEng() {
+    if (this._numOfArticles === 0) {
+      this._titleTempl = `${sanitizeHTML(localStorage.userName)}, you don't have any saved articles yet.`;
+    } else if (this._numOfArticles === 1) {
+      this._titleTempl = `${sanitizeHTML(localStorage.userName)}, you have 1 saved article.`;
+    } else {
+      this._titleTempl = `${sanitizeHTML(localStorage.userName)}, you have ${this._numOfArticles} saved articles.`;
+    }
+    this._title.textContent = this._titleTempl;
+  }
+
+  _renderWordsEng() {
+    this._words.textContent = 'According to the keywords: ';
+    if (this._numOfArticles === 0) {
+      this._words.textContent = '';
+      this._wordsTempl = '';
+    } else if (this._keywords.length === 1) {
+      const wordOne = this._makeContentForDOM(`<span>${sanitizeHTML(this._keywords[0])}.</span>`);
+      this._words.appendChild(wordOne);
+    } else if (this._keywords.length === 2) {
+      const wordOne = this._makeContentForDOM(`<span>${sanitizeHTML(this._keywords[0])}, </span>`);
+      const wordTwo = this._makeContentForDOM(`<span>${sanitizeHTML(this._keywords[1])}.</span>`);
+      this._words.appendChild(wordOne);
+      this._words.appendChild(wordTwo);
+    } else if (this._keywords.length === 3) {
+      const wordOne = this._makeContentForDOM(`<span>${sanitizeHTML(this._keywords[0])}, </span>`);
+      const wordTwo = this._makeContentForDOM(`<span>${sanitizeHTML(this._keywords[1])}, </span>`);
+      const wordThree = this._makeContentForDOM(`<span>${sanitizeHTML(this._keywords[2])}.</span>`);
+      this._words.appendChild(wordOne);
+      this._words.appendChild(wordTwo);
+      this._words.appendChild(wordThree);
+    } else {
+      const wordOne = this._makeContentForDOM(`<span>${sanitizeHTML(this._keywords[0])}, </span>`);
+      const wordTwo = this._makeContentForDOM(`<span>${sanitizeHTML(this._keywords[1])}, </span>`);
+      const wordsOthers = this._makeContentForDOM(`<span>and ${sanitizeHTML(this._keywords.length - 2)} more.</span>`);
+      this._words.appendChild(wordOne);
+      this._words.appendChild(wordTwo);
+      this._words.appendChild(wordsOthers);
+    }
   }
 }
