@@ -53,11 +53,11 @@ export default class PopupLogin extends Popup {
         event: 'click',
         callback: this._switch,
       },
-      {
-        element: window,
-        event: 'scroll',
-        callback: (evt) => this.noScroll(evt),
-      },
+      // {
+      //   element: window,
+      //   event: 'scroll',
+      //   callback: (evt) => this.noScroll(evt),
+      // },
     ]);
     if (!this._state.signin) {
       this._signupForm.addValidation(this);
