@@ -33,6 +33,11 @@ export default class Popup extends BaseComponent {
         event: 'click',
         callback: this._switch,
       },
+      {
+        element: window,
+        event: 'scroll',
+        callback: (evt) => this.noScroll(evt),
+      },
     ]);
   }
 
@@ -44,20 +49,22 @@ export default class Popup extends BaseComponent {
   open() {
     this.setContent();
     this._popup.classList.add('popup_is-opened');
-    document.querySelector('.root').classList.add('root_popup');
-    console.log(document.querySelector('.root'));
   }
 
   close() {
     this._clearListeners();
     this._content.remove();
     this._popup.classList.remove('popup_is-opened');
-    document.querySelector('.root').classList.remove('root_popup');
   }
 
   _keyhandler(event) {
     if ((event.target === this._popup && event.target !== this._content) || event.keyCode === 27) {
       this.close();
     }
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  noScroll() {
+    window.scrollTo(0, 0);
   }
 }

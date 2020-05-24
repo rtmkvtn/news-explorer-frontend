@@ -1,6 +1,6 @@
 const apiOptions = {
   mainApi: {
-    baseUrl: 'https://www.newsxyz.xyz/api/',
+    baseUrl: 'https://newsxyz.xyz/api/',
   },
   newsApi: {
     baseURL: 'https://newsapi.org/v2/everything',

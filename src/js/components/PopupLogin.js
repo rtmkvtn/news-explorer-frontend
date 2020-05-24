@@ -18,7 +18,6 @@ export default class PopupLogin extends Popup {
     }
     this.setContent();
     this._popup.classList.add('popup_is-opened');
-    document.querySelector('.root').classList.add('root_popup');
   }
 
   _chooseTempl() {
@@ -53,6 +52,11 @@ export default class PopupLogin extends Popup {
         element: this._popup.querySelector('.popup__link'),
         event: 'click',
         callback: this._switch,
+      },
+      {
+        element: window,
+        event: 'scroll',
+        callback: (evt) => this.noScroll(evt),
       },
     ]);
     if (!this._state.signin) {

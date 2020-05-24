@@ -8,8 +8,3 @@
   justify-content: space-between;
   position: relative;
 }
-
-.root_popup {
-  height: 100vw;
-  overflow: hidden;
-}
