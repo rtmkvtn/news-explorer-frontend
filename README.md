@@ -2,7 +2,7 @@
 
 ## v 1.1.0
 
-## [Site on gh-pages](https://fckxyz.github.io/news-explorer-frontend/index.html 'News-Explorer')
+## [Link to the Site](https://newsxyz.xyz 'News-Explorer')
 
 Front end part of the final project for yandex.Praktikum courses.
 
@@ -24,6 +24,14 @@ At the moment includes such features as:
   - Searching news articles by keywords using (https://newsapi.org/ "newsApi")
 - All the front-end logic on vanilla pure JS
 - JS made on ES-6 modules
+
+Future features:
+
+- Add ability to chose region of search
+- Add languages:
+  - RU
+  - DE mb
+  - ZH mb
 
 ## Installing
 
