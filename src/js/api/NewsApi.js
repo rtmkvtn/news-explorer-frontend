@@ -10,20 +10,23 @@ export default class NewsApi {
   }
 
   _reqUrlFormer(keyWord) {
-    this._reqUrl = `${this._baseUrl}?q=${keyWord}&from=${this._dateFrom}&to=${this._dateTo}&pageSize=100`;
+    this._reqUrl = `${this._baseUrl}?q=${keyWord}&from=${this._dateFrom}&to=${this._dateTo}&pageSize=100&apiKey=${this._apiKey}`;
   }
 
   getNews(keyWord) {
     this._reqUrlFormer(keyWord);
 
-    return fetch(`https://cors-anywhere.herokuapp.com/${this._reqUrl}`, {
-      headers: {
-        'X-Api-Key': this._apiKey,
-      },
+    return fetch(`${this._reqUrl}`, {
+      headers: {},
     })
       .then((res) => {
         if (res.ok) {
           return res.json();
+        }
+        if (res.status === 426) {
+          alert(
+            `An error has occured on the newsApi side. Unfortunately, I can not do anything with it at the moment. Hope, they will fix it soon. Meanwhile you can check all other functions of this app except news search.`,
+          );
         }
         return res.json().then((err) => err);
       })
