@@ -4,34 +4,40 @@
 @import url(./__container/search__container.css);
 
 .search:before {
-    content: '';
-    z-index:-1;
-    height: 700px;
-    width: 100%;
-    background: url(../../images/georgia-de-lotz--UsJoNxLaNo-unsplash.png) no-repeat center;
-    top: -80px;
-    left: 0;
-    position: absolute;
-    background-size: cover;
+  content: '';
+  z-index: -1;
+  height: 676px;
+  width: 100%;
+  background: url(../../images/georgia-de-lotz--UsJoNxLaNo-unsplash.png) no-repeat center;
+  top: -80px;
+  left: 0;
+  position: absolute;
+  background-size: cover;
 }
 
 @media (max-width: 768px) {
-    .search:before {
-        top: -65px;
-        height: 485px;
-    }
+  .search:before {
+    top: -65px;
+    height: 478px;
+  }
 }
 
 @media (max-width: 640px) {
-    .search:before {
-        top: -59px;
-        height: 430px;
-    }
+  .search:before {
+    top: -51px;
+    height: 410px;
+  }
 }
 
 @media (max-width: 425px) {
-    .search:before {
-        top: -52px;
-        height: 600px;
-    }
+  .search:before {
+    top: -51px;
+    height: 572px;
+  }
+}
+
+@media (max-width: 370px) {
+  .search:before {
+    height: 595px;
+  }
 }

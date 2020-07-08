@@ -33,11 +33,11 @@ export default class Popup extends BaseComponent {
         event: 'click',
         callback: this._switch,
       },
-      {
-        element: window,
-        event: 'scroll',
-        callback: (evt) => this.noScroll(evt),
-      },
+      // {
+      //   element: window,
+      //   event: 'scroll',
+      //   callback: (evt) => this.noScroll(evt),
+      // },
     ]);
   }
 

@@ -7,7 +7,7 @@ const cardsTemplates = {
         url(${sanitizeHTML(altImage)})">
         <button class="card__button-templ button_small-square"></button>
         <div class="card__button-hover-banner button-hover-banner">
-         <p class="button-hover-banner__text">Please signin to save articles</p>
+         <p class="button-hover-banner__text">Please sign in to save articles</p>
         </div>
       </div>
       <p class="card__date">${sanitizeHTML(date)}</p>

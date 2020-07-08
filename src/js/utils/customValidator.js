@@ -7,7 +7,9 @@ export default class CustomValidator {
   }
 
   emailValidation() {
-    if (!this._input.validity.valid) {
+    if (this._input.value.length === 0) {
+      this._error.textContent = 'This field is required!';
+    } else if (!this._input.validity.valid) {
       this._error.textContent = validErrorsEng.EMAIL_NOT_EMAIL;
     } else {
       this._error.textContent = '';
